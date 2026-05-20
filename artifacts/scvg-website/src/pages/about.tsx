@@ -11,7 +11,7 @@ export function About() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6 text-white">About SCVG</h1>
-          <p className="text-xl text-muted-foreground">The story of two distinct carriers united by a passion for virtual aviation.</p>
+          <p className="text-xl text-muted-foreground">Chasing the Sun since 2023 — and now flying further than ever.</p>
         </motion.div>
 
         <div className="space-y-16">
@@ -20,16 +20,16 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold font-serif mb-6 text-white">Our Story & The Merger</h2>
+            <h2 className="text-3xl font-bold font-serif mb-6 text-white">Our Story</h2>
             <div className="prose prose-invert prose-lg max-w-none">
               <p>
-                The Sun Country Virtual Group (SCVG) began as a dedicated community for simulation pilots who shared a passion for Sun Country Airlines. Focusing on meticulous 737 operations out of Minneapolis, the group quickly grew a reputation for professionalism and a warm community atmosphere.
+                Sun Country Virtual was founded in 2023 by a group of flight sim enthusiasts who wanted to do one thing right: replicate the real Sun Country Airlines experience. That meant Boeing 737 operations, MSP as home base, and a community that treated virtual aviation with the same respect as the real thing. From day one, our motto has been simple — <em>Chasing the Sun.</em>
               </p>
               <p>
-                As the virtual aviation landscape evolved, an opportunity presented itself. Allegiant Virtual, known for its extensive Airbus operations and leisure-focused route network, shared a similar operational philosophy and community spirit.
+                We grew steadily, building a reputation for professionalism, realistic procedures, and a welcoming atmosphere for sim pilots of all experience levels. Sun Country is who we are, and that never changes.
               </p>
               <p>
-                In a historic move for our community, the two organizations merged to form the Sun Country Virtual Group. This strategic alliance allows pilots to fly an incredibly diverse network, operating both Boeing and Airbus narrowbodies under a single, unified leadership and tracking system.
+                When Allegiant Air and Sun Country Airlines announced their real-world merger, it felt natural to reflect that in our virtual community. We evolved from a single virtual airline into the <strong>Sun Country Virtual Group</strong> — adding Allegiant operations to our network while keeping Sun Country squarely at the heart of everything we do. Allegiant brings more routes, more Airbus operations, and more sky to explore. But make no mistake: this is still Sun Country's home.
               </p>
             </div>
           </motion.section>

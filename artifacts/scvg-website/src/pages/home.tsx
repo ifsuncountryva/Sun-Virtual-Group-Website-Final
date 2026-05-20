@@ -32,7 +32,7 @@ export function Home() {
             {...fadeIn}
             className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-6 tracking-tight text-white"
           >
-            Where Virtual Aviation <span className="text-primary">Takes Flight</span>
+            Chasing the Sun <span className="text-primary">Since 2023</span>
           </motion.h1>
           
           <motion.p 
@@ -40,7 +40,7 @@ export function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-xl text-muted-foreground mb-10 max-w-2xl"
           >
-            Experience the most professional, realistic, and welcoming virtual airline community. Combining the best of Sun Country and Allegiant operations.
+            Sun Country Virtual Group is a professional virtual airline community rooted in Sun Country Airlines operations — now expanding with Allegiant Air to bring you more routes, more aircraft, and more sky to explore.
           </motion.p>
           
           <motion.div 
@@ -89,7 +89,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Merger Teaser */}
+      {/* Our Story Teaser */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
@@ -100,26 +100,26 @@ export function Home() {
               viewport={{ once: true }}
             >
               <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold mb-6">
-                Two Airlines. One Group.
+                Sun Country at Heart. A Group by Choice.
               </div>
               <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6 text-white">
-                Expanding Horizons
+                Where We Come From
               </h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                Sun Country Virtual Group now encompasses the dynamic networks of both Sun Country Airlines and Allegiant Air. This historic merger brings together premier leisure carriers under one professional operational umbrella.
+                We started in 2023 as Sun Country Virtual — a tight-knit group of sim pilots passionate about replicating Sun Country Airlines' leisure routes out of Minneapolis. What began as one airline grew into something bigger. With the real-world merger of Allegiant Air and Sun Country, we expanded our community into a full virtual group, adding Allegiant operations while keeping Sun Country at the core of everything we do.
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
                   <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
-                  <span className="text-muted-foreground">Unified rank and progression system</span>
+                  <span className="text-muted-foreground">Sun Country roots — Boeing 737 operations from MSP since 2023</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
-                  <span className="text-muted-foreground">Expanded fleet options across Boeing and Airbus</span>
+                  <span className="text-muted-foreground">Now expanded with Allegiant Airbus operations across the country</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
-                  <span className="text-muted-foreground">Coast-to-coast operational hubs</span>
+                  <span className="text-muted-foreground">One community, one standard, two great airlines</span>
                 </li>
               </ul>
               <Link href="/about">
@@ -136,30 +136,32 @@ export function Home() {
               viewport={{ once: true }}
             >
               <div className="space-y-4">
-                <Card className="bg-card border-card-border overflow-hidden group">
+                <Card className="bg-primary/10 border-primary/30 overflow-hidden group">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-xl mb-2">Sun Country</h3>
-                    <p className="text-sm text-muted-foreground">Boeing 737 Operations</p>
+                    <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Founded 2023</div>
+                    <h3 className="font-bold text-xl mb-2 text-white">Sun Country</h3>
+                    <p className="text-sm text-muted-foreground">Our home. Boeing 737 ops out of MSP.</p>
                   </CardContent>
                 </Card>
-                <Card className="bg-card border-card-border overflow-hidden mt-8 group">
+                <Card className="bg-card border-border overflow-hidden mt-8 group">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-xl mb-2">Minneapolis</h3>
-                    <p className="text-sm text-muted-foreground">Primary SCX Hub</p>
+                    <p className="text-sm text-muted-foreground">Primary Hub — MSP</p>
                   </CardContent>
                 </Card>
               </div>
               <div className="space-y-4 mt-8">
-                <Card className="bg-card border-card-border overflow-hidden group">
+                <Card className="bg-card border-border overflow-hidden group">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-xl mb-2">Allegiant</h3>
-                    <p className="text-sm text-muted-foreground">Airbus Operations</p>
+                    <div className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Now Joining</div>
+                    <h3 className="font-bold text-xl mb-2 text-white">Allegiant</h3>
+                    <p className="text-sm text-muted-foreground">Airbus ops expanding our reach.</p>
                   </CardContent>
                 </Card>
-                <Card className="bg-card border-card-border overflow-hidden mt-8 group">
+                <Card className="bg-card border-border overflow-hidden mt-8 group">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-xl mb-2">Las Vegas</h3>
-                    <p className="text-sm text-muted-foreground">Primary AAY Hub</p>
+                    <p className="text-sm text-muted-foreground">Allegiant Hub — LAS</p>
                   </CardContent>
                 </Card>
               </div>
