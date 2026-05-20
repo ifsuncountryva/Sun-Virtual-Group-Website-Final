@@ -20,12 +20,27 @@ export function Home() {
         
         <div className="container relative z-10 mx-auto px-4 flex flex-col items-center text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 w-64 md:w-96 rounded-xl bg-white p-4 shadow-2xl"
+            className="mb-8 flex items-center gap-5"
           >
-            <img src="/logo-full.jpeg" alt="SCVG Logo" className="w-full h-auto" />
+            <img
+              src="/logo-mark-clean.png"
+              alt="SCXV mark"
+              className="h-20 md:h-28 w-auto drop-shadow-[0_0_24px_rgba(244,124,32,0.5)]"
+            />
+            <div className="text-left">
+              <div className="text-2xl md:text-3xl font-serif font-bold text-white leading-tight tracking-wide">
+                Sun Country
+              </div>
+              <div className="text-2xl md:text-3xl font-serif font-bold text-primary leading-tight tracking-wide">
+                Virtual Group
+              </div>
+              <div className="text-xs md:text-sm text-muted-foreground tracking-[0.25em] uppercase mt-1">
+                SCXV · Est. 2023
+              </div>
+            </div>
           </motion.div>
           
           <motion.h1 
