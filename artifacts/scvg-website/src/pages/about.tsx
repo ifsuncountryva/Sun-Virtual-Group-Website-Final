@@ -10,7 +10,7 @@ export function About() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6 text-white">About SCVG</h1>
+          <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6 text-white">About SCXV</h1>
           <p className="text-xl text-muted-foreground">Chasing the Sun since 2023 — and now flying further than ever.</p>
         </motion.div>
 

@@ -33,9 +33,9 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-lg bg-white p-1 flex items-center justify-center overflow-hidden">
-            <img src="/logo-mark.png" alt="SCVG Logo Mark" className="w-full h-full object-contain group-hover:scale-110 transition-transform" />
+            <img src="/logo-mark.png" alt="SCXV Logo Mark" className="w-full h-full object-contain group-hover:scale-110 transition-transform" />
           </div>
-          <span className="font-serif font-bold text-xl hidden sm:block">SCVG</span>
+          <span className="font-serif font-bold text-xl hidden sm:block">SCXV</span>
         </Link>
 
         {/* Desktop Nav */}

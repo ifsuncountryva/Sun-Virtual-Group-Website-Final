@@ -10,7 +10,7 @@ export function Footer() {
               <img src="/logo-full.jpeg" alt="SCVG Logo" className="w-full h-auto object-contain" />
             </div>
             <p className="text-muted-foreground text-sm max-w-sm">
-              The Sun Country Virtual Group provides a professional, realistic, and welcoming environment for virtual aviators across the globe. Join us to experience the best of Sun Country and Allegiant virtual operations.
+              Sun Country Virtual Group (SCXV) — chasing the Sun since 2023. Built on Sun Country roots, now expanded with Allegiant operations. A professional home for virtual aviators worldwide.
             </p>
           </div>
           
@@ -26,7 +26,7 @@ export function Footer() {
           <div>
             <h4 className="font-serif font-semibold mb-4 text-foreground">Join Us</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About SCVG</Link></li>
+              <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About SCXV</Link></li>
               <li><Link href="/quiz" className="text-muted-foreground hover:text-primary transition-colors">Membership Quiz</Link></li>
             </ul>
           </div>

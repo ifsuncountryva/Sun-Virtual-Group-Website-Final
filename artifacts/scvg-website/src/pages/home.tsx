@@ -68,10 +68,10 @@ export function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { icon: <Users className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "500+", label: "Active Pilots" },
-              { icon: <Globe className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "120+", label: "Destinations" },
-              { icon: <Plane className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "5,000+", label: "Monthly Flights" },
-              { icon: <Award className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "99.9%", label: "Realism Rate" },
+              { icon: <Users className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "2023", label: "Founded" },
+              { icon: <Globe className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "1,400+", label: "Combined Routes" },
+              { icon: <Plane className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "2 Airlines", label: "Sun Country · Allegiant" },
+              { icon: <Award className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "6", label: "Aircraft Types" },
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -216,7 +216,7 @@ export function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4 text-white">Join the Ranks</h2>
-            <p className="text-muted-foreground text-lg">Your career at SCVG starts with three simple steps.</p>
+            <p className="text-muted-foreground text-lg">Your career at SCXV starts with three simple steps.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto relative">

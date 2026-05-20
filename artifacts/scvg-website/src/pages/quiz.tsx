@@ -38,7 +38,7 @@ const questions = [
     options: ["PIE (Tampa/St. Pete-Clearwater)", "MCO (Orlando International)", "MIA (Miami)", "TPA (Tampa International)"]
   },
   {
-    question: "What does SCVG stand for?",
+    question: "What does the airline code SCXV stand for?",
     correct: "Sun Country Virtual Group",
     options: ["Sun Country Virtual Group", "Simulated Commercial Virtual Gateway", "Sky Country Virtual Group", "Sun Continental Virtual Group"]
   },
