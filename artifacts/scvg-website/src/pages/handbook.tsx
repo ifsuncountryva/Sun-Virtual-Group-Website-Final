@@ -72,20 +72,31 @@ export function Handbook() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16 bg-background">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-background">
 
-        {/* Page Header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
-            <BookOpen className="w-3 h-3" /> Official Documentation
+      {/* Hero header — gradient treatment matching other pages */}
+      <div className="relative pt-32 pb-14 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_15%_0%,rgba(244,124,32,0.11),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_85%_0%,rgba(37,99,235,0.13),transparent)]" />
+        <div className="absolute bottom-0 inset-x-0 h-px" style={{ background: "linear-gradient(90deg,#F47C20 0%,#2563EB 100%)" }} />
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="container mx-auto px-4">
+          <div className="inline-flex items-center gap-2 border border-white/10 bg-white/5 text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-5 text-muted-foreground">
+            <BookOpen className="w-3 h-3 text-primary" /> Official SCXV Documentation
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold font-serif mb-3 text-white">Pilot Handbook</h1>
-          <p className="text-lg text-muted-foreground">
+          <h1
+            className="text-5xl md:text-6xl font-bold font-serif mb-3"
+            style={{ background: "linear-gradient(90deg,#fff 40%,#F47C20 70%,#2563EB 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+          >
+            Pilot Handbook
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl">
             Standard Operating Procedures for the Sun Country Virtual Group (SCXV). Read every section before taking the membership quiz.
           </p>
         </motion.div>
+      </div>
 
+      <div className="container mx-auto px-4 pb-20">
         <div className="flex gap-8 items-start">
 
           {/* Sticky TOC Sidebar */}
@@ -95,8 +106,12 @@ export function Handbook() {
             transition={{ delay: 0.2 }}
             className="hidden lg:block w-64 shrink-0 sticky top-28 self-start"
           >
-            <div className="rounded-xl border border-border bg-card p-4">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 px-2">Contents</p>
+            <div className="rounded-xl border bg-card p-4 overflow-hidden relative"
+              style={{ borderColor: "rgba(244,124,32,0.2)" }}>
+              {/* gradient rule at top of sidebar */}
+              <div className="absolute top-0 inset-x-0 h-0.5 rounded-t-xl"
+                style={{ background: "linear-gradient(90deg,#F47C20,#2563EB)" }} />
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 px-2 mt-1">Contents</p>
               <nav className="space-y-0.5">
                 {sections.map(({ id, label, icon: Icon }) => (
                   <button

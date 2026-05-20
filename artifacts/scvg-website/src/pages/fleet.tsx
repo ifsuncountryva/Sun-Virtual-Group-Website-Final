@@ -105,21 +105,44 @@ export function Fleet() {
 
   const showCodeshare = activeFilter === "All" || activeFilter === "Codeshare";
 
-  return (
-    <div className="min-h-screen pt-24 pb-16 bg-background">
-      <div className="container mx-auto px-4">
+  const cardAccent = (div: "Sun Country" | "Allegiant" | "Codeshare") => {
+    if (div === "Sun Country") return { border: "rgba(244,124,32,0.35)", bg: "linear-gradient(160deg,rgba(244,124,32,0.08),rgba(13,27,62,0.8))", glow: "rgba(244,124,32,0.30)" };
+    if (div === "Allegiant")   return { border: "rgba(37,99,235,0.35)",  bg: "linear-gradient(160deg,rgba(37,99,235,0.10),rgba(13,27,62,0.8))",  glow: "rgba(37,99,235,0.35)" };
+    return                            { border: "rgba(255,255,255,0.08)", bg: "transparent", glow: "transparent" };
+  };
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4 text-white">Our Fleet</h1>
+  const filterStyle = (f: Division) => {
+    if (f === activeFilter) {
+      if (f === "Sun Country") return { background: "#F47C20", color: "#0a1528", borderColor: "#F47C20" };
+      if (f === "Allegiant")   return { background: "#2563EB", color: "#fff",    borderColor: "#2563EB" };
+      return                          { background: "#F47C20", color: "#0a1528", borderColor: "#F47C20" };
+    }
+    return {};
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+
+      {/* Hero header */}
+      <div className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_20%_0%,rgba(244,124,32,0.11),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_0%,rgba(37,99,235,0.13),transparent)]" />
+        <div className="absolute bottom-0 inset-x-0 h-px" style={{ background: "linear-gradient(90deg,#F47C20 0%,#2563EB 100%)" }} />
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
+          <h1
+            className="text-5xl md:text-7xl font-bold font-serif mb-4"
+            style={{ background: "linear-gradient(90deg,#fff 40%,#F47C20 70%,#2563EB 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+          >
+            Our Fleet
+          </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             From Sun Country's workhorse 737s to Allegiant's leisure narrowbodies and a 12-airline codeshare network.
           </p>
         </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 pb-20">
 
         {/* Filter Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -128,11 +151,12 @@ export function Fleet() {
               key={f}
               data-testid={`filter-${f.toLowerCase().replace(" ", "-")}`}
               onClick={() => setActiveFilter(f)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
+              className="px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200"
+              style={
                 activeFilter === f
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-transparent border-border text-muted-foreground hover:text-foreground hover:border-foreground/30"
-              }`}
+                  ? filterStyle(f)
+                  : { background: "transparent", borderColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.5)" }
+              }
             >
               {f}
             </button>
@@ -143,69 +167,74 @@ export function Fleet() {
         {activeFilter !== "Codeshare" && (
           <div className="mb-16">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((aircraft, i) => (
-                <motion.div
-                  key={aircraft.type}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  data-testid={`aircraft-card-${i}`}
-                >
-                  <div className="bg-card border border-border rounded-xl overflow-hidden h-full flex flex-col hover:border-primary/40 transition-colors duration-300">
-                    {/* Image area */}
-                    <div className="h-44 bg-gradient-to-b from-muted/30 to-muted/10 flex items-center justify-center p-4 relative">
-                      <AircraftImagePlaceholder type={aircraft.type} image={aircraft.image} />
-                      {/* Division badge top-right */}
-                      <span className={`absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full border ${divisionColors[aircraft.division]}`}>
-                        {aircraft.division}
-                      </span>
-                    </div>
+              {filtered.map((aircraft, i) => {
+                const ac = cardAccent(aircraft.division);
+                return (
+                  <motion.div
+                    key={aircraft.type}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    data-testid={`aircraft-card-${i}`}
+                  >
+                    <div
+                      className="rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:scale-[1.01]"
+                      style={{ border: `1px solid ${ac.border}`, background: ac.bg }}
+                    >
+                      {/* Image area */}
+                      <div className="h-44 flex items-center justify-center p-4 relative"
+                        style={{ background: "rgba(0,0,0,0.15)" }}>
+                        <AircraftImagePlaceholder type={aircraft.type} image={aircraft.image} />
+                        <span className={`absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full border ${divisionColors[aircraft.division]}`}>
+                          {aircraft.division}
+                        </span>
+                      </div>
 
-                    {/* Content */}
-                    <div className="p-5 flex-1 flex flex-col">
-                      <h3 className="text-xl font-bold font-serif text-white mb-1">{aircraft.type}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{aircraft.role}</p>
+                      {/* Content */}
+                      <div className="p-5 flex-1 flex flex-col">
+                        <h3 className="text-xl font-bold font-serif text-white mb-1">{aircraft.type}</h3>
+                        <p className="text-sm text-muted-foreground mb-4">{aircraft.role}</p>
 
-                      <div className="mt-auto space-y-2.5 pt-4 border-t border-border">
-                        <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">Cruise Speed</span>
-                          <span className="font-mono text-xs text-foreground font-medium">{aircraft.cruiseSpeed}</span>
+                        <div className="mt-auto space-y-2.5 pt-4 border-t border-white/10">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-muted-foreground">Cruise Speed</span>
+                            <span className="font-mono text-xs text-foreground font-medium">{aircraft.cruiseSpeed}</span>
+                          </div>
+                          {aircraft.maxAlt && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">Max Cruise Alt</span>
+                              <span className="font-mono text-xs font-medium"
+                                style={{ color: aircraft.division === "Allegiant" ? "#60a5fa" : "#F47C20" }}>
+                                {aircraft.maxAlt}
+                              </span>
+                            </div>
+                          )}
+                          {aircraft.rankRequired && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">Rank Required</span>
+                              <Badge variant="outline" className="text-xs border-primary/40 text-primary">
+                                {aircraft.rankRequired}
+                              </Badge>
+                            </div>
+                          )}
                         </div>
-                        {aircraft.maxAlt && (
-                          <div className="flex justify-between text-sm">
-                            <span className="text-muted-foreground">Max Cruise Alt</span>
-                            <span className="font-mono text-xs text-primary font-medium">{aircraft.maxAlt}</span>
-                          </div>
-                        )}
-                        {aircraft.rankRequired && (
-                          <div className="flex justify-between text-sm">
-                            <span className="text-muted-foreground">Rank Required</span>
-                            <Badge variant="outline" className="text-xs border-primary/40 text-primary">
-                              {aircraft.rankRequired}
-                            </Badge>
-                          </div>
-                        )}
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         )}
 
         {/* Codeshare Fleet */}
         {showCodeshare && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex-1 h-px bg-border" />
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg,transparent,rgba(244,124,32,0.4))" }} />
               <h2 className="text-2xl font-bold font-serif text-white whitespace-nowrap">Codeshare Partners</h2>
-              <div className="flex-1 h-px bg-border" />
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg,rgba(37,99,235,0.4),transparent)" }} />
             </div>
             <p className="text-muted-foreground text-sm text-center mb-8 max-w-xl mx-auto">
               Unlocked at <span className="text-primary font-semibold">First Officer</span> rank (40 hrs). Fly on behalf of 12 partner carriers using their aircraft types.
@@ -219,10 +248,11 @@ export function Fleet() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className="bg-card border border-border rounded-xl p-4 hover:border-border/80 transition-colors"
+                  className="rounded-xl p-4 transition-colors duration-200 hover:border-white/20"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
                   data-testid={`codeshare-card-${i}`}
                 >
-                  <h4 className="font-semibold text-foreground mb-2">{partner.airline}</h4>
+                  <h4 className="font-semibold text-white mb-2">{partner.airline}</h4>
                   <div className="flex flex-wrap gap-1.5">
                     {partner.types.map((t) => (
                       <span key={t} className="text-xs font-mono bg-muted text-muted-foreground px-2 py-0.5 rounded border border-border">
@@ -235,7 +265,6 @@ export function Fleet() {
             </div>
           </motion.div>
         )}
-
       </div>
     </div>
   );
