@@ -1,30 +1,47 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Shield, Plane, Radio, Gauge, Award, FileText, ChevronRight, AlertTriangle, Info, CheckCircle } from "lucide-react";
+import {
+  BookOpen, Shield, Plane, Star, Award, FileText,
+  Gauge, Radio, ChevronRight, Info, CheckCircle, AlertTriangle
+} from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
 const sections = [
-  { id: "welcome",    label: "Welcome & Introduction",        icon: BookOpen },
-  { id: "conduct",   label: "Rules & Code of Conduct",       icon: Shield },
-  { id: "ops",       label: "Flight Operations Standards",   icon: Plane },
-  { id: "atc",       label: "Radio & ATC Procedures",        icon: Radio },
-  { id: "minimums",  label: "Aircraft Operating Minimums",   icon: Gauge },
-  { id: "ranks",     label: "Rank & Progression System",     icon: Award },
-  { id: "reporting", label: "Reporting Requirements",        icon: FileText },
+  { id: "welcome",   label: "Welcome to SCXV",             icon: BookOpen },
+  { id: "activity",  label: "Activity Policy",              icon: Shield },
+  { id: "fleet",     label: "Aircraft Fleet",               icon: Plane },
+  { id: "ranks",     label: "Rank Structure",               icon: Award },
+  { id: "routes",    label: "Routes & Charter Ops",         icon: Radio },
+  { id: "featured",  label: "Featured Flights",             icon: Star },
+  { id: "ops",       label: "General Operating Procedures", icon: Gauge },
 ];
 
 function Callout({ type, children }: { type: "info" | "warning" | "rule"; children: React.ReactNode }) {
   const styles = {
-    info:    { border: "border-blue-500/40",   bg: "bg-blue-500/10",   icon: <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" /> },
-    warning: { border: "border-amber-500/40",  bg: "bg-amber-500/10",  icon: <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" /> },
-    rule:    { border: "border-primary/40",    bg: "bg-primary/10",    icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" /> },
+    info:    { border: "border-blue-500/40",  bg: "bg-blue-500/10",  icon: <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" /> },
+    warning: { border: "border-amber-500/40", bg: "bg-amber-500/10", icon: <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" /> },
+    rule:    { border: "border-primary/40",   bg: "bg-primary/10",   icon: <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" /> },
   };
   const s = styles[type];
   return (
     <div className={`flex gap-3 rounded-lg border ${s.border} ${s.bg} px-4 py-3 my-4 text-sm leading-relaxed`}>
       {s.icon}
       <span className="text-foreground/90">{children}</span>
+    </div>
+  );
+}
+
+function SectionHeader({ id, num, label, icon: Icon }: { id: string; num: string; label: string; icon: React.ElementType }) {
+  return (
+    <div id={id} className="flex items-center gap-3 mb-5 pb-4 border-b border-border scroll-mt-28">
+      <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
+        <Icon className="w-4 h-4 text-primary" />
+      </div>
+      <div>
+        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section {num}</span>
+        <h2 className="text-2xl font-bold font-serif text-white leading-tight">{label}</h2>
+      </div>
     </div>
   );
 }
@@ -59,40 +76,16 @@ export function Handbook() {
       <div className="container mx-auto px-4">
 
         {/* Page Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-10 max-w-3xl"
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
             <BookOpen className="w-3 h-3" /> Official Documentation
           </div>
           <h1 className="text-4xl md:text-5xl font-bold font-serif mb-3 text-white">Pilot Handbook</h1>
           <p className="text-lg text-muted-foreground">
-            Standard operating procedures and community rules for the Sun Country Virtual Group (SCXV). Read every section before taking the membership quiz.
+            Standard Operating Procedures for the Sun Country Virtual Group (SCXV). Read every section before taking the membership quiz.
           </p>
         </motion.div>
 
-        {/* SOP Upload Notice */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.15 }}
-          className="mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-xl border border-amber-500/30 bg-amber-500/10 px-6 py-4"
-        >
-          <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-amber-300 mb-0.5">Official SOPs Coming Soon</p>
-            <p className="text-xs text-muted-foreground">Our full Standard Operating Procedures document is being finalized and will be published here. The content below reflects current operational standards — review it to prepare for the membership quiz.</p>
-          </div>
-          <Link href="/quiz">
-            <Button size="sm" variant="outline" className="shrink-0 text-xs border-amber-500/40 text-amber-300 hover:bg-amber-500/10">
-              Take the Quiz <ChevronRight className="w-3 h-3 ml-1" />
-            </Button>
-          </Link>
-        </motion.div>
-
-        {/* Two-column layout: TOC sidebar + content */}
         <div className="flex gap-8 items-start">
 
           {/* Sticky TOC Sidebar */}
@@ -137,300 +130,339 @@ export function Handbook() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="flex-1 min-w-0 space-y-12"
+            className="flex-1 min-w-0 space-y-14"
           >
 
-            {/* ── Section 1 ── */}
-            <section id="welcome" ref={(el) => { sectionRefs.current["welcome"] = el; }} className="scroll-mt-28">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
-                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-                  <BookOpen className="w-4 h-4 text-primary" />
-                </div>
-                <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section 1</span>
-                  <h2 className="text-2xl font-bold font-serif text-white leading-tight">Welcome & Introduction</h2>
-                </div>
-              </div>
+            {/* ── Section 1 — Welcome ── */}
+            <section ref={(el) => { sectionRefs.current["welcome"] = el; }}>
+              <SectionHeader id="welcome" num="1" label="Welcome to SCXV" icon={BookOpen} />
               <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
-                <p>Welcome to the <strong>Sun Country Virtual Group (SCXV)</strong> — a virtual airline community founded in 2023 around a shared passion for Sun Country Airlines operations. We have been chasing the Sun ever since, growing from a single Boeing 737 operation out of Minneapolis into a full virtual group that now includes Allegiant Air's expansive route network.</p>
-                <p>This handbook is the authoritative source of truth for all SCXV operations, rules, and expectations. Whether you are flying a Sun Country 737-800 out of MSP or an Allegiant A320 out of Las Vegas, the standards described here apply to every pilot, every flight.</p>
-                <p>We take virtual aviation seriously — not because it has to be stressful, but because flying with real procedures alongside a community that cares makes every flight more rewarding. Take the time to read this handbook in full before attempting the membership quiz.</p>
-
+                <p>
+                  Welcome to <strong>Sun Country Virtual (SCXV)</strong> — a community that brings hometown airline vibes to the Infinite Flight world. We are a respectful, energetic, and welcoming group of virtual pilots united by a love of aviation and the carriers that inspire us.
+                </p>
+                <p>We proudly simulate:</p>
+                <ul className="text-muted-foreground space-y-1">
+                  <li><strong className="text-foreground">Scheduled operations</strong> — Allegiant and Sun Country</li>
+                  <li><strong className="text-foreground">Charter operations</strong> — Sun Country</li>
+                  <li><strong className="text-foreground">Historic routes</strong> — Allegiant and Sun Country</li>
+                </ul>
                 <Callout type="info">
-                  SCXV is not affiliated with Sun Country Airlines or Allegiant Air. We are an independent virtual aviation community that models our operations on those real-world carriers.
+                  Above all else — have fun. SCXV exists to make virtual flying enjoyable and accessible. If you have ideas or suggestions, don't hesitate to reach out.
                 </Callout>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">Who We Are</h3>
-                <p>SCXV operates two virtual airline divisions under a single unified leadership and tracking system:</p>
-                <ul className="text-muted-foreground space-y-1 mt-2">
-                  <li><strong className="text-foreground">Sun Country Division</strong> — Boeing 737-700, 737-800, and 737 MAX 8. Hub: Minneapolis (MSP). 300+ routes. Callsign: SUN COUNTRY.</li>
-                  <li><strong className="text-foreground">Allegiant Division</strong> — Airbus A319, A320, and A220. Hubs: Las Vegas (LAS), Tampa/St. Pete (PIE), Orlando Sanford (SFB). 1,100+ routes. Callsign: ALLEGIANT.</li>
-                </ul>
-                <p>Pilots may fly for either or both divisions once they have passed the membership quiz and joined the Discord server. Division transfers and dual endorsements are available after your first 10 approved flight hours.</p>
               </div>
             </section>
 
-            {/* ── Section 2 ── */}
-            <section id="conduct" ref={(el) => { sectionRefs.current["conduct"] = el; }} className="scroll-mt-28">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
-                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-                  <Shield className="w-4 h-4 text-primary" />
-                </div>
-                <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section 2</span>
-                  <h2 className="text-2xl font-bold font-serif text-white leading-tight">Rules & Code of Conduct</h2>
-                </div>
-              </div>
+            {/* ── Section 2 — Activity ── */}
+            <section ref={(el) => { sectionRefs.current["activity"] = el; }}>
+              <SectionHeader id="activity" num="2" label="Activity Policy" icon={Shield} />
               <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
-                <p>Our community thrives because of the quality of its people. Every pilot who joins SCXV agrees to uphold these standards at all times — on Discord, on the network, and in any public representation of the group.</p>
-
+                <p>At SCXV, we value flexibility above rigid quotas.</p>
                 <Callout type="rule">
-                  All SCXV members must treat other members with respect and professionalism at all times. This is non-negotiable and applies in every channel, every flight, and every interaction.
+                  There is no strict activity requirement. Pilots are encouraged to fly whenever it suits them best.
                 </Callout>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">2.1 General Conduct</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>Harassment, discrimination, or toxic behavior of any kind is grounds for immediate dismissal without appeal.</li>
-                  <li>Constructive criticism is welcome. Personal attacks are not.</li>
-                  <li>Treat staff decisions with respect. If you disagree with a ruling, submit a formal appeal through the proper Discord channel — do not argue publicly.</li>
-                  <li>Do not publicly represent SCXV in a negative light on social media, forums, or other VA communities.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">2.2 Discord Rules</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>Use channels for their designated purpose. Keep off-topic discussion to the designated channels.</li>
-                  <li>No spam, excessive self-promotion, or unsolicited advertising.</li>
-                  <li>Keep language appropriate. We are a diverse community with members of all ages.</li>
-                  <li>Report rule violations to staff privately — do not publicly call out other members.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">2.3 Network Etiquette</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>When flying on VATSIM or IVAO, you represent SCXV. Fly professionally.</li>
-                  <li>Follow ATC instructions promptly and courteously.</li>
-                  <li>Do not ghost ATC without a valid reason. If you must disconnect mid-flight, inform ATC when possible.</li>
-                </ul>
+                <p>
+                  Life happens. We will never remove a pilot for simply being busy. If you plan to be away for an extended period, give us a heads-up in Discord so we know you're still part of the crew.
+                </p>
               </div>
             </section>
 
-            {/* ── Section 3 ── */}
-            <section id="ops" ref={(el) => { sectionRefs.current["ops"] = el; }} className="scroll-mt-28">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
-                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-                  <Plane className="w-4 h-4 text-primary" />
-                </div>
+            {/* ── Section 3 — Fleet ── */}
+            <section ref={(el) => { sectionRefs.current["fleet"] = el; }}>
+              <SectionHeader id="fleet" num="3" label="Aircraft Fleet" icon={Plane} />
+              <div className="space-y-8">
+
                 <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section 3</span>
-                  <h2 className="text-2xl font-bold font-serif text-white leading-tight">Flight Operations Standards</h2>
-                </div>
-              </div>
-              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
-                <p>SCXV uses a flight tracking system to log and validate all pilot activity. To ensure your flights count toward rank progression and remain on record, follow these standards precisely.</p>
-
-                <Callout type="rule">
-                  Pilots must complete the flight log with all required fields before submitting a flight report. Incomplete or missing logs may be automatically rejected.
-                </Callout>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">3.1 Required Flight Log Fields</h3>
-                <ul className="text-muted-foreground space-y-1">
-                  <li>Departure and arrival airports (ICAO format)</li>
-                  <li>Aircraft type and registration</li>
-                  <li>Block departure and arrival times (UTC)</li>
-                  <li>Total block time and flight time</li>
-                  <li>Division flown (Sun Country or Allegiant)</li>
-                  <li>Simulator platform used</li>
-                  <li>Any notable events, deviations, or diversions</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">3.2 Simulation Standards</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>Simulation rate must remain at <strong>1x</strong> for the entirety of all logged flights. Accelerated time renders the flight invalid.</li>
-                  <li>Pause is permitted briefly for real-life emergencies only. Extended pause periods are discouraged.</li>
-                  <li>Flights must begin and end at a valid airport with a proper pushback, taxi, takeoff, approach, landing, and taxi-in sequence.</li>
-                  <li>Cold-and-dark startup is strongly encouraged for realism. Departing from a pre-configured state mid-flight is not permitted.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">3.3 Simulator Crashes & Technical Issues</h3>
-                <Callout type="warning">
-                  If you experience a simulator crash mid-flight, file a PIREP and note the technical issue in the flight log. Do not artificially relocate your aircraft to resume — log a new flight from the diversion or departure airport.
-                </Callout>
-                <p>Repeated technical PIREPs from the same pilot may trigger a review by the Training Director to ensure logging standards are being met correctly.</p>
-              </div>
-            </section>
-
-            {/* ── Section 4 ── */}
-            <section id="atc" ref={(el) => { sectionRefs.current["atc"] = el; }} className="scroll-mt-28">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
-                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-                  <Radio className="w-4 h-4 text-primary" />
-                </div>
-                <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section 4</span>
-                  <h2 className="text-2xl font-bold font-serif text-white leading-tight">Radio & ATC Procedures</h2>
-                </div>
-              </div>
-              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
-                <p>Flying on VATSIM or IVAO is strongly encouraged for all SCXV pilots. Interacting with live ATC adds a level of realism that offline flying cannot replicate, and it reflects well on the group when our pilots communicate professionally.</p>
-
-                <Callout type="rule">
-                  Proper ICAO phraseology is required for all ATC communication. Non-standard language causes confusion and reflects poorly on SCXV.
-                </Callout>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">4.1 Callsign Usage</h3>
-                <ul className="text-muted-foreground space-y-1">
-                  <li><strong className="text-foreground">Sun Country Division:</strong> Use callsign <em>SUN COUNTRY</em> followed by flight number (e.g., SUN COUNTRY 201).</li>
-                  <li><strong className="text-foreground">Allegiant Division:</strong> Use callsign <em>ALLEGIANT</em> followed by flight number (e.g., ALLEGIANT 802).</li>
-                  <li>Always verify your callsign is set correctly in your network client before connecting.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">4.2 Basic Radio Standards</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>Read back all ATC clearances in full — altitude, heading, frequency, and clearance limit.</li>
-                  <li>Monitor the correct frequency at all times. Do not transmit on guard (121.5 / 243.0) unless declaring an emergency.</li>
-                  <li>Use position and intentions reports when flying in uncontrolled airspace (CTAF procedures).</li>
-                  <li>If you are new to ATC communication, review the VATSIM/IVAO pilot resources before flying in controlled airspace.</li>
-                </ul>
-              </div>
-            </section>
-
-            {/* ── Section 5 ── */}
-            <section id="minimums" ref={(el) => { sectionRefs.current["minimums"] = el; }} className="scroll-mt-28">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
-                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-                  <Gauge className="w-4 h-4 text-primary" />
-                </div>
-                <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section 5</span>
-                  <h2 className="text-2xl font-bold font-serif text-white leading-tight">Aircraft Operating Minimums</h2>
-                </div>
-              </div>
-              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
-                <p>Realism means operating within the limits of your aircraft — not just flying the route, but flying it correctly. The following minimums apply to all SCXV flights regardless of division.</p>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">5.1 Weight & Balance</h3>
-                <ul className="text-muted-foreground space-y-1">
-                  <li>Do not exceed Maximum Takeoff Weight (MTOW) or Maximum Landing Weight (MLW).</li>
-                  <li>Ensure correct center of gravity (CG) is within the certified envelope for the aircraft type.</li>
-                  <li>Use a proper load sheet or EFB tool to calculate fuel and payload before each departure.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">5.2 Fuel Planning</h3>
-                <ul className="text-muted-foreground space-y-1">
-                  <li>Load: Trip fuel + 5% contingency + alternate fuel (if applicable) + final reserve (30 min for jets).</li>
-                  <li>Diversions due to weather, ATC, or technical issues are a normal part of operations — plan for them.</li>
-                  <li>Fuel emergencies caused by inadequate planning are not valid grounds for a PIREP override.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">5.3 Weather Minimums</h3>
-                <ul className="text-muted-foreground space-y-1">
-                  <li>Observe published CAT I ILS minimums at a minimum: 200 ft DH / 1,800 RVR (or ½ SM visibility).</li>
-                  <li>Do not attempt approaches below published minimums unless your aircraft and pilot qualification support it.</li>
-                  <li>Takeoff minimums: 500 RVR with operative runway lighting for SCXV operations.</li>
-                </ul>
-
-                <Callout type="warning">
-                  Landing rates worse than -600 fpm on a normal flight will flag the PIREP for automatic review. Hard landings happen — extreme hard landings suggest improper approach technique and may result in a review by the Training Director.
-                </Callout>
-              </div>
-            </section>
-
-            {/* ── Section 6 ── */}
-            <section id="ranks" ref={(el) => { sectionRefs.current["ranks"] = el; }} className="scroll-mt-28">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
-                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-                  <Award className="w-4 h-4 text-primary" />
-                </div>
-                <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section 6</span>
-                  <h2 className="text-2xl font-bold font-serif text-white leading-tight">Rank & Progression System</h2>
-                </div>
-              </div>
-              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
-                <p>SCXV uses a unified rank structure that mirrors real-world airline career progression. Your rank is determined entirely by accumulated approved flight hours — no competitions, no fees, no favoritism.</p>
-
-                <Callout type="rule">
-                  Rank advancement follows real-world equivalent hours for each rank tier. Only approved flight hours — those that pass all validation checks — count toward progression.
-                </Callout>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-3">6.1 Rank Structure</h3>
-                <div className="not-prose overflow-hidden rounded-lg border border-border">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="bg-muted/50 border-b border-border">
-                        <th className="text-left px-4 py-3 text-foreground font-semibold">Rank</th>
-                        <th className="text-left px-4 py-3 text-foreground font-semibold">Hours Required</th>
-                        <th className="text-left px-4 py-3 text-foreground font-semibold">Privileges</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border">
-                      {[
-                        { rank: "Student Pilot",  hours: "0 hrs",       priv: "Training flights only" },
-                        { rank: "First Officer",   hours: "10 hrs",      priv: "Full line flying, both divisions" },
-                        { rank: "Senior F/O",      hours: "100 hrs",     priv: "Mentorship eligibility" },
-                        { rank: "Captain",         hours: "250 hrs",     priv: "Route bidding priority, checkride examiner" },
-                        { rank: "Senior Captain",  hours: "500 hrs",     priv: "Staff candidacy, hub manager eligible" },
-                      ].map((row) => (
-                        <tr key={row.rank} className="hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-3 font-medium text-foreground">{row.rank}</td>
-                          <td className="px-4 py-3 text-primary font-mono">{row.hours}</td>
-                          <td className="px-4 py-3 text-muted-foreground">{row.priv}</td>
+                  <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-primary" /> Sun Country Division
+                  </h3>
+                  <div className="overflow-hidden rounded-lg border border-border">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="bg-muted/50 border-b border-border">
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Aircraft</th>
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Role</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody className="divide-y divide-border">
+                        <tr className="hover:bg-muted/30 transition-colors">
+                          <td className="px-4 py-3 font-medium text-foreground">Boeing 737-800</td>
+                          <td className="px-4 py-3 text-muted-foreground">Sun Country Airlines — scheduled &amp; charter</td>
+                        </tr>
+                        <tr className="hover:bg-muted/30 transition-colors">
+                          <td className="px-4 py-3 font-medium text-foreground">DC-10</td>
+                          <td className="px-4 py-3 text-muted-foreground">Gemini Air Cargo — cargo operations</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">6.2 Promotion Process</h3>
-                <p>Promotions are processed automatically when flight hours thresholds are met and approved. You will receive a notification in Discord when your rank is updated. There is no application required for standard rank progressions.</p>
-                <p>Staff positions (Hub Manager, Training Director, Events Lead) are not based on hours alone — they require an application and interview process when a vacancy opens.</p>
+                <div>
+                  <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-400" /> Allegiant Division
+                  </h3>
+                  <div className="overflow-hidden rounded-lg border border-border">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="bg-muted/50 border-b border-border">
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Aircraft</th>
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Notes</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border">
+                        {[
+                          { ac: "Airbus A320", note: "Primary narrowbody" },
+                          { ac: "Boeing 737-8-200 MAX", note: "High-density leisure routes" },
+                          { ac: "Boeing 757-200 (Generic)", note: "Longer range leisure routes" },
+                        ].map((r) => (
+                          <tr key={r.ac} className="hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-3 font-medium text-foreground">{r.ac}</td>
+                            <td className="px-4 py-3 text-muted-foreground">{r.note}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-muted-foreground" /> Codeshare Fleet
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-3">Unlocked at First Officer rank (40 hrs). Fly on behalf of our partner carriers.</p>
+                  <div className="overflow-hidden rounded-lg border border-border">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="bg-muted/50 border-b border-border">
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Airline</th>
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Aircraft Types</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border">
+                        {[
+                          { airline: "Aeroflot",               types: "A320, A333, A359, B739, B77W" },
+                          { airline: "Air Europa",              types: "B738, B789" },
+                          { airline: "Aerolíneas Argentinas",   types: "E190, B738, A332" },
+                          { airline: "Condor",                  types: "A321, A333, A339" },
+                          { airline: "easyJet",                 types: "A319, A320, A21N" },
+                          { airline: "Ice Air Virtual",         types: "A21N, B38M, B39M (739), B752" },
+                          { airline: "jetBlue",                 types: "A223, A320, A321, E190" },
+                          { airline: "Norse",                   types: "B789" },
+                          { airline: "Porter",                  types: "E295 (E190), Q400" },
+                          { airline: "REX",                     types: "B738" },
+                          { airline: "Royal Jordanian",         types: "B788, E175, E190" },
+                          { airline: "SkyAlps",                 types: "Q400 (generic)" },
+                        ].map((r) => (
+                          <tr key={r.airline} className="hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-3 font-medium text-foreground">{r.airline}</td>
+                            <td className="px-4 py-3 text-muted-foreground font-mono text-xs">{r.types}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </section>
 
-            {/* ── Section 7 ── */}
-            <section id="reporting" ref={(el) => { sectionRefs.current["reporting"] = el; }} className="scroll-mt-28">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
-                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
-                  <FileText className="w-4 h-4 text-primary" />
+            {/* ── Section 4 — Ranks ── */}
+            <section ref={(el) => { sectionRefs.current["ranks"] = el; }}>
+              <SectionHeader id="ranks" num="4" label="Rank Structure" icon={Award} />
+              <p className="text-sm text-muted-foreground mb-4">Rank is earned through approved flight hours and unlocks new aircraft, routes, and privileges.</p>
+              <div className="overflow-hidden rounded-lg border border-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-muted/50 border-b border-border">
+                      <th className="text-left px-4 py-3 text-foreground font-semibold">Rank</th>
+                      <th className="text-left px-4 py-3 text-foreground font-semibold">Hours</th>
+                      <th className="text-left px-4 py-3 text-foreground font-semibold">Access Unlocked</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    {[
+                      { rank: "Cadet",                hours: "0 – 39 hrs",  access: "Sun Country & Allegiant Scheduled Routes" },
+                      { rank: "First Officer",        hours: "40 hrs",      access: "All Codeshare Routes" },
+                      { rank: "Captain",              hours: "200 hrs",     access: "Prime Air Routes" },
+                      { rank: "Training Captain",     hours: "400 hrs",     access: "Gemini Air Cargo Routes" },
+                      { rank: "Executive Flight Crew",hours: "750 hrs",     access: "Charter Flights" },
+                    ].map((r, i) => (
+                      <tr key={r.rank} className={`hover:bg-muted/30 transition-colors ${i === 4 ? "bg-primary/5" : ""}`}>
+                        <td className="px-4 py-3 font-semibold text-foreground">{r.rank}</td>
+                        <td className="px-4 py-3 text-primary font-mono">{r.hours}</td>
+                        <td className="px-4 py-3 text-muted-foreground">{r.access}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <Callout type="info">
+                Promotions are processed automatically when hour thresholds are reached. No application required for standard rank progressions.
+              </Callout>
+            </section>
+
+            {/* ── Section 5 — Routes & Charter ── */}
+            <section ref={(el) => { sectionRefs.current["routes"] = el; }}>
+              <SectionHeader id="routes" num="5" label="Routes & Charter Operations" icon={Radio} />
+              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground space-y-6">
+
+                <div>
+                  <h3 className="text-base font-bold text-white mb-2">5.1 Route Network</h3>
+                  <p>
+                    SCXV maintains a comprehensive route database covering all known scheduled routes — past and present — for both Sun Country and Allegiant. We operate an <strong>open route policy</strong>: if a route is missing, open a ticket in <span className="font-mono text-primary">#support</span> and it will be added.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-bold text-white mb-2">5.2 Charter Operations</h3>
+                  <p>Sun Country operates one of the largest charter networks in North America. SCXV has replicated this in a unique fashion.</p>
+
+                  <Callout type="rule">
+                    Charter flights are restricted to pilots who have reached <strong>Executive Flight Crew</strong> rank (750 hours).
+                  </Callout>
+
+                  <div className="not-prose mt-4 grid sm:grid-cols-3 gap-4">
+                    {[
+                      { label: "Aircraft", value: "Sun Country B737-800 only" },
+                      { label: "Airports", value: "Any 737-capable airport worldwide" },
+                      { label: "Max Flight Time", value: "8 hours" },
+                    ].map((item) => (
+                      <div key={item.label} className="rounded-lg border border-border bg-card p-4">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
+                        <p className="text-sm font-semibold text-foreground">{item.value}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6">
+                    <h4 className="text-sm font-bold text-white mb-2">Charter PIREP Callsign Format</h4>
+                    <p className="text-muted-foreground text-sm mb-3">Charter PIREPs use a callsign with the <span className="font-mono text-primary font-bold">SY8</span> prefix:</p>
+                    <div className="not-prose flex gap-3 flex-wrap">
+                      <code className="bg-muted rounded-md px-3 py-2 text-sm font-mono text-primary border border-border">SY8XXX</code>
+                      <code className="bg-muted rounded-md px-3 py-2 text-sm font-mono text-primary border border-border">SY8001</code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ── Section 6 — Featured Flights ── */}
+            <section ref={(el) => { sectionRefs.current["featured"] = el; }}>
+              <SectionHeader id="featured" num="6" label="Featured Flights" icon={Star} />
+              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
+                <p>
+                  SCXV runs a flexible monthly featured system instead of fixed weekly routes of the week. This gives every pilot freedom to participate on their own schedule.
+                </p>
+                <h3 className="text-base font-bold text-white mt-4 mb-2">How it Works</h3>
+                <p>Each month, two features are announced in Discord:</p>
+                <ul className="text-muted-foreground space-y-1">
+                  <li><strong className="text-foreground">Airport of the Month</strong> — fly any route to or from that airport</li>
+                  <li><strong className="text-foreground">Airline of the Month</strong> — fly any route using that month's featured airline</li>
+                </ul>
+                <p>There are no limits on how many featured flights you can complete in a month.</p>
+              </div>
+
+              <div className="mt-6 grid sm:grid-cols-3 gap-4">
+                {[
+                  { label: "Airline of the Month", multiplier: "1.5x", color: "border-blue-500/40 bg-blue-500/10" },
+                  { label: "Airport of the Month", multiplier: "1.5x", color: "border-blue-500/40 bg-blue-500/10" },
+                  { label: "Both Combined — Triple Sun Bonus", multiplier: "3x", color: "border-primary/40 bg-primary/10" },
+                ].map((item) => (
+                  <div key={item.label} className={`rounded-lg border ${item.color} p-4 text-center`}>
+                    <p className="text-3xl font-bold font-serif text-primary mb-1">{item.multiplier}</p>
+                    <p className="text-xs text-muted-foreground leading-snug">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* ── Section 7 — General Ops ── */}
+            <section ref={(el) => { sectionRefs.current["ops"] = el; }}>
+              <SectionHeader id="ops" num="7" label="General Operating Procedures" icon={Gauge} />
+              <div className="space-y-8">
+
+                <div>
+                  <h3 className="text-base font-bold text-white mb-3">7.1 Aircraft Performance</h3>
+                  <div className="overflow-hidden rounded-lg border border-border">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="bg-muted/50 border-b border-border">
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Aircraft</th>
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Cruise Speed</th>
+                          <th className="text-left px-4 py-3 text-foreground font-semibold">Max Cruise Alt</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border">
+                        {[
+                          { ac: "Boeing 737-800",    speed: "Mach 0.74 – 0.80", alt: "FL410" },
+                          { ac: "DC-10",             speed: "Mach 0.77 – 0.83", alt: "—" },
+                          { ac: "Airbus A320",       speed: "Mach 0.76 – 0.80", alt: "FL390" },
+                          { ac: "Boeing 757-200",    speed: "Mach 0.77 – 0.81", alt: "FL420" },
+                        ].map((r) => (
+                          <tr key={r.ac} className="hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-3 font-medium text-foreground">{r.ac}</td>
+                            <td className="px-4 py-3 text-muted-foreground font-mono text-xs">{r.speed}</td>
+                            <td className="px-4 py-3 text-primary font-mono text-xs">{r.alt}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-bold text-white mb-3">7.2 Flight Rules</h3>
+                  <div className="space-y-2">
+                    <Callout type="rule">
+                      All SCXV flights must be conducted on the <strong>Expert Server</strong>. No exceptions.
+                    </Callout>
+                    <Callout type="rule">
+                      When IFATC is active, all ATC instructions must be followed promptly and correctly.
+                    </Callout>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-bold text-white mb-3">7.3 PIREP Notes & AP+ Rules</h3>
+                  <ul className="text-sm text-muted-foreground space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>AP+ is permitted on all flights.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span><strong className="text-foreground">Maximum of 2 flights</strong> may be logged simultaneously using AP+.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>If AP+ incorrectly tracks fuel or time, pilots may use <strong className="text-foreground">SimBrief or Flightradar24 values</strong> as substitutes.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Final Note */}
+            <div className="rounded-xl border border-primary/30 bg-primary/10 p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Section 7</span>
-                  <h2 className="text-2xl font-bold font-serif text-white leading-tight">Reporting Requirements</h2>
+                  <h3 className="text-xl font-bold font-serif text-white mb-2">A Note from Leadership</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-2">
+                    "Above all else… have fun. SCXV exists to make virtual flying enjoyable and accessible. If you have ideas or suggestions, don't hesitate to reach out!"
+                  </p>
+                  <p className="text-primary text-sm font-semibold">— flyinggoosey</p>
                 </div>
               </div>
-              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground">
-                <p>An active roster keeps SCXV healthy and ensures our route network reflects real pilot demand. The following activity requirements apply to all members.</p>
+            </div>
 
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">7.1 Activity Requirements</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>Pilots must submit at least <strong className="text-foreground">one valid flight report every 30 days</strong> to remain on the active roster.</li>
-                  <li>Pilots who miss the 30-day window without a filed LOA will receive an inactivity warning via Discord DM.</li>
-                  <li>A second missed window results in removal from the active roster. Reinstatement requires re-taking the membership quiz.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">7.2 Leave of Absence (LOA)</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>LOAs are available for periods of inactivity up to 90 days.</li>
-                  <li>Request an LOA via the designated Discord channel before your 30-day window expires.</li>
-                  <li>LOAs exceeding 90 days require staff approval and are reviewed on a case-by-case basis.</li>
-                </ul>
-
-                <h3 className="text-lg font-bold text-white mt-6 mb-2">7.3 PIREP Submission</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>All PIREPs must be submitted within 48 hours of flight completion.</li>
-                  <li>Late or amended PIREPs require a staff note explaining the reason for the delay.</li>
-                  <li>Falsified PIREPs (fabricated routes, inflated hours) are grounds for immediate permanent dismissal.</li>
-                </ul>
-
-                <Callout type="info">
-                  When in doubt, submit a PIREP with notes rather than not submitting at all. The training team can review and adjust — they cannot review what was never filed.
-                </Callout>
-              </div>
-            </section>
-
-            {/* Ready to Join CTA */}
-            <div className="rounded-xl border border-primary/30 bg-primary/10 p-8 text-center">
+            {/* Quiz CTA */}
+            <div className="rounded-xl border border-border bg-card p-8 text-center">
               <h3 className="text-2xl font-bold font-serif text-white mb-3">Ready to Fly with SCXV?</h3>
-              <p className="text-muted-foreground mb-6 max-w-lg mx-auto">You've read the handbook. Now prove it — score 100% on the membership quiz to unlock access to our Discord and start logging flights.</p>
+              <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+                You've read the handbook. Score 100% on the membership quiz to unlock our Discord and start logging flights.
+              </p>
               <Link href="/quiz">
                 <Button size="lg" className="px-10 py-5 h-auto text-base font-semibold gap-2">
                   <Plane className="w-5 h-5" /> Take the Membership Quiz
