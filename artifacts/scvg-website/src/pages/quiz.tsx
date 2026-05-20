@@ -184,7 +184,7 @@ export function Quiz() {
                 <h2 className="text-4xl md:text-5xl font-bold font-serif text-white">Congratulations!</h2>
                 <p className="text-xl text-muted-foreground">You scored 10/10. Welcome to the Sun Country Virtual Group.</p>
                 <div className="mt-8 inline-block">
-                  <a href="https://discord.gg/PLACEHOLDER" target="_blank" rel="noreferrer">
+                  <a href="https://discord.gg/dbuFEQU8tS" target="_blank" rel="noreferrer">
                     <Button size="lg" className="px-8 py-6 text-lg h-auto gap-3 bg-[#5865F2] hover:bg-[#4752C4] text-white border-none">
                       <SiDiscord className="w-6 h-6" />
                       Join Our Discord
