@@ -171,38 +171,56 @@ export function Home() {
       </section>
 
       {/* Fleet Preview */}
-      <section className="py-24 bg-card/50 border-y border-border">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4 text-white">Modern Fleet</h2>
-          <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-            Command a diverse fleet of narrowbody aircraft tailored for efficiency and range.
-          </p>
-          
+      <section className="py-24 border-y border-border relative overflow-hidden">
+        {/* Aerial ramp photo as moody background */}
+        <div className="absolute inset-0 z-0">
+          <img src="/ramp-aerial.jpeg" alt="" className="w-full h-full object-cover object-center opacity-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4 text-white">Our Fleet on the Ramp</h2>
+            <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
+              Sun Country and Allegiant flying side by side — just like our virtual group.
+            </p>
+          </motion.div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-background rounded-xl p-6 border border-border flex flex-col items-center"
+              className="bg-background/80 backdrop-blur-sm rounded-xl p-6 border border-border flex flex-col items-center"
             >
-              <img src="/images/fleet-737-800.png" alt="Boeing 737" className="w-full h-auto mb-4 object-contain" />
-              <h3 className="text-2xl font-bold font-serif mb-2">Boeing 737 Family</h3>
-              <p className="text-muted-foreground mb-4">The backbone of Sun Country operations.</p>
+              <div className="h-44 flex items-center justify-center mb-4 w-full">
+                <img src="/fleet-sc-737-clean.png" alt="Sun Country Boeing 737-800" className="h-full w-full object-contain drop-shadow-2xl" />
+              </div>
+              <h3 className="text-2xl font-bold font-serif mb-1 text-white">Boeing 737-800</h3>
+              <p className="text-primary text-sm font-semibold mb-1">Sun Country Division</p>
+              <p className="text-muted-foreground text-sm">Scheduled routes and charter ops from MSP.</p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-background rounded-xl p-6 border border-border flex flex-col items-center"
+              transition={{ delay: 0.15 }}
+              className="bg-background/80 backdrop-blur-sm rounded-xl p-6 border border-border flex flex-col items-center"
             >
-              <img src="/images/fleet-a320.png" alt="Airbus A320" className="w-full h-auto mb-4 object-contain" />
-              <h3 className="text-2xl font-bold font-serif mb-2">Airbus A320 Family</h3>
-              <p className="text-muted-foreground mb-4">Powering the Allegiant route network.</p>
+              <div className="h-44 flex items-center justify-center mb-4 w-full">
+                <img src="/fleet-g4-737max-clean.png" alt="Allegiant Boeing 737 MAX" className="h-full w-full object-contain drop-shadow-2xl" />
+              </div>
+              <h3 className="text-2xl font-bold font-serif mb-1 text-white">Boeing 737-8-200 MAX</h3>
+              <p className="text-blue-400 text-sm font-semibold mb-1">Allegiant Division</p>
+              <p className="text-muted-foreground text-sm">High-density leisure routes across the network.</p>
             </motion.div>
           </div>
-          
+
           <div className="mt-12">
             <Link href="/fleet">
               <Button variant="outline" size="lg">Explore Full Fleet</Button>

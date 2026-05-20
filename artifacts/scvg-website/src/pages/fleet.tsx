@@ -22,6 +22,7 @@ const fleet: Aircraft[] = [
     role: "Scheduled & Charter Operations",
     cruiseSpeed: "Mach 0.74 – 0.80",
     maxAlt: "FL410",
+    image: "/fleet-sc-737-clean.png",
   },
   {
     type: "DC-10",
@@ -43,6 +44,7 @@ const fleet: Aircraft[] = [
     role: "High-Density Leisure Routes",
     cruiseSpeed: "Mach 0.74 – 0.80",
     maxAlt: "FL410",
+    image: "/fleet-g4-737max-clean.png",
   },
   {
     type: "Boeing 757-200",
