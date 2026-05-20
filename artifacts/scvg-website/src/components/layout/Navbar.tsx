@@ -27,9 +27,12 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
+      {/* orange → blue gradient rule — always visible, brighter when scrolled */}
+      <div className={`absolute bottom-0 inset-x-0 h-px transition-opacity duration-300 ${isScrolled ? "opacity-100" : "opacity-40"}`}
+        style={{ background: "linear-gradient(90deg, #F47C20 0%, #2563EB 100%)" }} />
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
           <img src="/logo-mark-clean.png" alt="SCXV" className="h-9 w-auto group-hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(244,124,32,0.4)]" />

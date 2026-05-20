@@ -13,52 +13,58 @@ export function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
+      {/* ── Hero ── */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden border-b border-border">
-        {/* Background gradient/pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-background to-background z-0" />
-        
+        {/* Dual-airline gradient bg: warm orange glow left, Allegiant blue glow right */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_20%_50%,rgba(244,124,32,0.15),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_50%,rgba(37,99,235,0.18),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(13,27,62,0.0),rgba(13,27,62,0.7))]" />
+        </div>
+
         <div className="container relative z-10 mx-auto px-4 flex flex-col items-center text-center">
+          {/* Logo — landscape, no clutter line */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 flex items-center gap-5"
+            className="mb-10 flex items-center gap-5"
           >
             <img
               src="/logo-mark-clean.png"
               alt="SCXV mark"
-              className="h-20 md:h-28 w-auto drop-shadow-[0_0_24px_rgba(244,124,32,0.5)]"
+              className="h-24 md:h-32 w-auto"
+              style={{ filter: "drop-shadow(0 0 32px rgba(244,124,32,0.75)) drop-shadow(0 0 64px rgba(244,124,32,0.35))" }}
             />
             <div className="text-left">
-              <div className="text-2xl md:text-3xl font-serif font-bold text-white leading-tight tracking-wide">
+              <div className="text-3xl md:text-4xl font-serif font-bold text-white leading-tight tracking-wide">
                 Sun Country
               </div>
-              <div className="text-2xl md:text-3xl font-serif font-bold text-primary leading-tight tracking-wide">
+              <div
+                className="text-3xl md:text-4xl font-serif font-bold leading-tight tracking-wide"
+                style={{ background: "linear-gradient(90deg, #F47C20 0%, #2563EB 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+              >
                 Virtual Group
-              </div>
-              <div className="text-xs md:text-sm text-muted-foreground tracking-[0.25em] uppercase mt-1">
-                SCXV · Est. 2023
               </div>
             </div>
           </motion.div>
-          
-          <motion.h1 
+
+          <motion.h1
             {...fadeIn}
             className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-6 tracking-tight text-white"
           >
             Chasing the Sun <span className="text-primary">Since 2023</span>
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             {...fadeIn}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-xl text-muted-foreground mb-10 max-w-2xl"
           >
             Sun Country Virtual Group is a professional virtual airline community rooted in Sun Country Airlines operations — now expanding with Allegiant Air to bring you more routes, more aircraft, and more sky to explore.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             {...fadeIn}
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-4"
@@ -76,19 +82,25 @@ export function Home() {
             </Link>
           </motion.div>
         </div>
+
+        {/* Bottom fade into stats bar */}
+        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-card to-transparent z-10" />
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-card border-y border-border py-12">
-        <div className="container mx-auto px-4">
+      {/* ── Stats Bar ── gradient from SC-orange tint to Allegiant-blue tint */}
+      <section className="relative py-12 border-b border-border overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(244,124,32,0.08)] via-card to-[rgba(37,99,235,0.10)]" />
+        {/* thin gradient rule at top */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-primary via-transparent to-blue-500" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { icon: <Users className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "2023", label: "Founded" },
-              { icon: <Globe className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "1,400+", label: "Combined Routes" },
-              { icon: <Plane className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "2 Airlines", label: "Sun Country · Allegiant" },
-              { icon: <Award className="w-6 h-6 text-primary mb-2 mx-auto" />, stat: "6", label: "Aircraft Types" },
+              { icon: <Users className="w-6 h-6 mb-2 mx-auto text-primary" />, stat: "2023", label: "Founded" },
+              { icon: <Globe className="w-6 h-6 mb-2 mx-auto text-primary" />, stat: "1,400+", label: "Combined Routes" },
+              { icon: <Plane className="w-6 h-6 mb-2 mx-auto text-blue-400" />, stat: "2 Airlines", label: "Sun Country · Allegiant" },
+              { icon: <Award className="w-6 h-6 mb-2 mx-auto text-blue-400" />, stat: "6", label: "Aircraft Types" },
             ].map((item, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -102,20 +114,26 @@ export function Home() {
             ))}
           </div>
         </div>
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </section>
 
-      {/* Our Story Teaser */}
+      {/* ── Our Story Teaser ── */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
-            <motion.div 
+            <motion.div
               className="flex-1"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold mb-6">
-                Sun Country at Heart. A Group by Choice.
+              {/* Combined badge */}
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full text-sm font-semibold border border-border"
+                style={{ background: "linear-gradient(90deg, rgba(244,124,32,0.15), rgba(37,99,235,0.15))" }}>
+                <span className="text-primary">Sun Country</span>
+                <span className="text-muted-foreground">·</span>
+                <span className="text-blue-400">Allegiant</span>
+                <span className="text-muted-foreground text-xs">at Heart</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6 text-white">
                 Where We Come From
@@ -129,7 +147,7 @@ export function Home() {
                   <span className="text-muted-foreground">Sun Country roots — Boeing 737 operations from MSP since 2023</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
+                  <ShieldCheck className="w-6 h-6 text-blue-400 shrink-0" />
                   <span className="text-muted-foreground">Now expanded with Allegiant Airbus operations across the country</span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -143,39 +161,43 @@ export function Home() {
                 </Button>
               </Link>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="flex-1 grid grid-cols-2 gap-4"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
               <div className="space-y-4">
-                <Card className="bg-primary/10 border-primary/30 overflow-hidden group">
+                {/* Sun Country card — orange accent */}
+                <Card className="border-primary/40 overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, rgba(244,124,32,0.12), rgba(244,124,32,0.04))" }}>
                   <CardContent className="p-6">
                     <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Founded 2023</div>
                     <h3 className="font-bold text-xl mb-2 text-white">Sun Country</h3>
                     <p className="text-sm text-muted-foreground">Our home. Boeing 737 ops out of MSP.</p>
                   </CardContent>
                 </Card>
-                <Card className="bg-card border-border overflow-hidden mt-8 group">
+                <Card className="bg-card border-border overflow-hidden mt-8">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-xl mb-2">Minneapolis</h3>
+                    <h3 className="font-bold text-xl mb-2 text-white">Minneapolis</h3>
                     <p className="text-sm text-muted-foreground">Primary Hub — MSP</p>
                   </CardContent>
                 </Card>
               </div>
               <div className="space-y-4 mt-8">
-                <Card className="bg-card border-border overflow-hidden group">
+                {/* Allegiant card — blue accent */}
+                <Card className="border-blue-500/40 overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.15), rgba(37,99,235,0.04))" }}>
                   <CardContent className="p-6">
-                    <div className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Now Joining</div>
+                    <div className="text-xs font-semibold text-blue-400 uppercase tracking-widest mb-2">Now Joining</div>
                     <h3 className="font-bold text-xl mb-2 text-white">Allegiant</h3>
                     <p className="text-sm text-muted-foreground">Airbus ops expanding our reach.</p>
                   </CardContent>
                 </Card>
-                <Card className="bg-card border-border overflow-hidden mt-8 group">
+                <Card className="bg-card border-border overflow-hidden mt-8">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-xl mb-2">Las Vegas</h3>
+                    <h3 className="font-bold text-xl mb-2 text-white">Las Vegas</h3>
                     <p className="text-sm text-muted-foreground">Allegiant Hub — LAS</p>
                   </CardContent>
                 </Card>
@@ -185,12 +207,17 @@ export function Home() {
         </div>
       </section>
 
-      {/* Fleet Preview */}
-      <section className="py-24 border-y border-border relative overflow-hidden">
-        {/* Aerial ramp photo as moody background */}
+      {/* ── Gradient divider ── */}
+      <div className="h-px bg-gradient-to-r from-primary/60 via-blue-500/60 to-primary/60" />
+
+      {/* ── Fleet Preview ── */}
+      <section className="py-24 border-b border-border relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src="/ramp-aerial.jpeg" alt="" className="w-full h-full object-cover object-center opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background/80" />
+          {/* Side colour bleeds */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_15%_50%,rgba(244,124,32,0.12),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_85%_50%,rgba(37,99,235,0.14),transparent)]" />
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -206,29 +233,35 @@ export function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* SC card — orange border left */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-background/80 backdrop-blur-sm rounded-xl p-6 border border-border flex flex-col items-center"
+              className="rounded-xl p-6 border border-primary/30 flex flex-col items-center backdrop-blur-sm"
+              style={{ background: "linear-gradient(135deg, rgba(244,124,32,0.10), rgba(13,27,62,0.85))" }}
             >
               <div className="h-44 flex items-center justify-center mb-4 w-full">
-                <img src="/fleet-sc-737-clean.png" alt="Sun Country Boeing 737-800" className="h-full w-full object-contain drop-shadow-2xl" />
+                <img src="/fleet-sc-737-clean.png" alt="Sun Country Boeing 737-800" className="h-full w-full object-contain"
+                  style={{ filter: "drop-shadow(0 8px 24px rgba(244,124,32,0.35))" }} />
               </div>
               <h3 className="text-2xl font-bold font-serif mb-1 text-white">Boeing 737-800</h3>
               <p className="text-primary text-sm font-semibold mb-1">Sun Country Division</p>
               <p className="text-muted-foreground text-sm">Scheduled routes and charter ops from MSP.</p>
             </motion.div>
 
+            {/* Allegiant card — blue border */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="bg-background/80 backdrop-blur-sm rounded-xl p-6 border border-border flex flex-col items-center"
+              className="rounded-xl p-6 border border-blue-500/30 flex flex-col items-center backdrop-blur-sm"
+              style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(13,27,62,0.85))" }}
             >
               <div className="h-44 flex items-center justify-center mb-4 w-full">
-                <img src="/fleet-g4-737max-clean.png" alt="Allegiant Boeing 737 MAX" className="h-full w-full object-contain drop-shadow-2xl" />
+                <img src="/fleet-g4-737max-clean.png" alt="Allegiant Boeing 737 MAX" className="h-full w-full object-contain"
+                  style={{ filter: "drop-shadow(0 8px 24px rgba(37,99,235,0.40))" }} />
               </div>
               <h3 className="text-2xl font-bold font-serif mb-1 text-white">Boeing 737-8-200 MAX</h3>
               <p className="text-blue-400 text-sm font-semibold mb-1">Allegiant Division</p>
@@ -238,45 +271,68 @@ export function Home() {
 
           <div className="mt-12">
             <Link href="/fleet">
-              <Button variant="outline" size="lg">Explore Full Fleet</Button>
+              <Button variant="outline" size="lg" className="border-border/60 hover:border-primary/60">
+                Explore Full Fleet
+              </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Join Process */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
+      {/* ── Join the Ranks ── */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        {/* subtle combined background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_100%,rgba(37,99,235,0.07),transparent)]" />
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4 text-white">Join the Ranks</h2>
             <p className="text-muted-foreground text-lg">Your career at SCXV starts with three simple steps.</p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto relative">
-            <div className="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-border z-0" />
-            
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
-              { step: "01", title: "Read the Handbook", desc: "Familiarize yourself with our operational standards and code of conduct." },
-              { step: "02", title: "Pass the Quiz", desc: "Demonstrate your knowledge in a quick 10-question multiple choice exam." },
-              { step: "03", title: "Take the Skies", desc: "Gain access to our Discord, claim your pilot ID, and log your first flight." }
+              {
+                step: "01", title: "Read the Handbook", desc: "Familiarize yourself with our operational standards and code of conduct.",
+                gradient: "linear-gradient(135deg,#F47C20,#e06910)",
+                glow: "rgba(244,124,32,0.30)"
+              },
+              {
+                step: "02", title: "Pass the Quiz", desc: "Demonstrate your knowledge in a quick 10-question multiple choice exam.",
+                gradient: "linear-gradient(135deg,#F47C20,#2563EB)",
+                glow: "rgba(150,80,180,0.25)"
+              },
+              {
+                step: "03", title: "Take the Skies", desc: "Gain access to our Discord, claim your pilot ID, and log your first flight.",
+                gradient: "linear-gradient(135deg,#2563EB,#1d4ed8)",
+                glow: "rgba(37,99,235,0.30)"
+              },
             ].map((item, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="relative z-10 flex flex-col items-center text-center bg-background p-6 rounded-xl border border-border"
+                transition={{ delay: i * 0.15 }}
+                className="flex flex-col items-center text-center bg-card p-8 rounded-xl border border-border relative overflow-hidden"
               >
-                <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mb-6">
+                {/* Subtle gradient tint behind card */}
+                <div className="absolute inset-0 opacity-5 rounded-xl" style={{ background: item.gradient }} />
+                <div
+                  className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white mb-6"
+                  style={{
+                    background: item.gradient,
+                    boxShadow: `0 0 24px ${item.glow}`
+                  }}
+                >
                   {item.step}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground">{item.desc}</p>
+                <h3 className="relative z-10 text-xl font-bold mb-3 text-white">{item.title}</h3>
+                <p className="relative z-10 text-muted-foreground">{item.desc}</p>
               </motion.div>
             ))}
           </div>
-          
+
           <div className="mt-16 text-center">
             <Link href="/quiz">
               <Button size="lg" className="px-12 py-6 text-lg h-auto">Start Your Application</Button>
@@ -284,6 +340,9 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* Bottom gradient rule */}
+      <div className="h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
     </div>
   );
 }

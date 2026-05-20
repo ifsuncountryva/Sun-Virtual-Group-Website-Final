@@ -150,6 +150,24 @@
   --destructive-foreground: 0 0% 98%;
 }
 
+/* Allegiant rainbow stripe gradient — matches the livery */
+.allegiant-stripe {
+  background: linear-gradient(90deg, #F47C20 0%, #FACC15 35%, #2563EB 100%);
+}
+
+/* Combined SCXV gradient — orange → blue */
+.scxv-gradient {
+  background: linear-gradient(90deg, #F47C20 0%, #2563EB 100%);
+}
+
+/* Text gradient utility */
+.text-gradient-scxv {
+  background: linear-gradient(90deg, #F47C20 0%, #2563EB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 @layer base {
   * {
     @apply border-border;
