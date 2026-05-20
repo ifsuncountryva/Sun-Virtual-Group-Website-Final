@@ -1,0 +1,14 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "Z9JxLR_uWCsagMJlGG7RD"
+uri = "file://artifacts/scvg-website/public/images/fleet-737-800.png"
+type = "image"
+title = "Boeing 737-800 Side Profile"
+
+[[generated]]
+id = "SvzZbvbBvLYzeipFrRxET"
+uri = "file://artifacts/scvg-website/public/images/fleet-a320.png"
+type = "image"
+title = "Airbus A320 Side Profile"
