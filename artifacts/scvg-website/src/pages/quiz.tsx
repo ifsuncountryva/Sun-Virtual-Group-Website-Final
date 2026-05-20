@@ -8,54 +8,54 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const questions = [
   {
-    question: "What is the primary hub for Sun Country Virtual operations?",
-    correct: "MSP (Minneapolis)",
-    options: ["MSP (Minneapolis)", "LAS (Las Vegas)", "LAX (Los Angeles)", "ORD (Chicago)"]
+    question: "What is the minimum rank required to fly charter flights at SCXV?",
+    correct: "Executive Flight Crew",
+    options: ["Captain", "Executive Flight Crew", "Training Captain", "First Officer"]
   },
   {
-    question: "What aircraft does Allegiant Virtual primarily operate?",
-    correct: "Airbus A319 and A320",
-    options: ["Boeing 737 family", "Airbus A319 and A320", "Embraer E175", "Boeing 757"]
+    question: "Which aircraft is used for Sun Country charter operations?",
+    correct: "Boeing 737-800",
+    options: ["Airbus A320", "Boeing 757-200", "Boeing 737-800", "DC-10"]
   },
   {
-    question: "What is required before submitting a flight report?",
-    correct: "Complete the flight log with all required fields",
-    options: ["Complete the flight log with all required fields", "Get approval from a senior pilot", "Wait 24 hours after the flight", "Submit a photo of the flight"]
+    question: "What is the maximum flight time allowed for charter flights?",
+    correct: "8 hours",
+    options: ["6 hours", "10 hours", "12 hours", "8 hours"]
   },
   {
-    question: "According to the code of conduct, how should pilots treat other members?",
-    correct: "With respect and professionalism at all times",
-    options: ["With respect and professionalism at all times", "Only senior pilots deserve respect", "Informally, it is a game", "Compete with other pilots for routes"]
+    question: "Which server must all SCXV flights be conducted on?",
+    correct: "Expert Server",
+    options: ["Casual Server", "Training Server", "Expert Server", "Private Server"]
   },
   {
-    question: "What is required to advance in rank?",
-    correct: "Complete real-world equivalent hours for each rank tier",
-    options: ["Complete real-world equivalent hours for each rank tier", "Pay a monthly fee", "Fly only specific routes", "Win a monthly competition"]
+    question: "What rank unlocks Gemini Air Cargo routes?",
+    correct: "Training Captain",
+    options: ["Captain", "Executive Flight Crew", "First Officer", "Training Captain"]
   },
   {
-    question: "Which hub does Allegiant Virtual use in Florida?",
-    correct: "PIE (Tampa/St. Pete-Clearwater)",
-    options: ["PIE (Tampa/St. Pete-Clearwater)", "MCO (Orlando International)", "MIA (Miami)", "TPA (Tampa International)"]
+    question: "What is the required callsign prefix for charter PIREPs?",
+    correct: "SY8XXX",
+    options: ["SY7XXX", "SY8XXX", "SC8XXX", "SX8XXX"]
   },
   {
-    question: "What does the airline code SCXV stand for?",
-    correct: "Sun Country Virtual Group",
-    options: ["Sun Country Virtual Group", "Simulated Commercial Virtual Gateway", "Sky Country Virtual Group", "Sun Continental Virtual Group"]
+    question: "What is the maximum number of flights that may be logged simultaneously using AP+?",
+    correct: "2",
+    options: ["1", "2", "3", "Unlimited"]
   },
   {
-    question: "What is required for ATC communication during flights?",
-    correct: "Proper ICAO phraseology",
-    options: ["Proper ICAO phraseology", "Any language is acceptable", "Text chat only", "No ATC communication required"]
+    question: "Which rank gains access to all codeshare routes?",
+    correct: "First Officer",
+    options: ["Cadet", "Captain", "First Officer", "Executive Flight Crew"]
   },
   {
-    question: "Which aircraft family does Sun Country Virtual operate?",
-    correct: "Boeing 737 family",
-    options: ["Boeing 737 family", "Airbus A320 family", "Boeing 777", "Embraer E-Jets"]
+    question: "What bonus multiplier is awarded when both the Airport of the Month and Airline of the Month are completed together?",
+    correct: "3x",
+    options: ["2x", "1.5x", "2.5x", "3x"]
   },
   {
-    question: "What should a pilot do if they experience a sim crash mid-flight?",
-    correct: "File a PIREP and note the technical issue in the flight log",
-    options: ["File a PIREP and note the technical issue in the flight log", "Ignore it and rebook the flight", "Contact the real airline", "Restart the sim and continue without reporting"]
+    question: "If AP+ incorrectly tracks fuel or time, what may pilots use instead?",
+    correct: "SimBrief or Flightradar24 values",
+    options: ["Discord estimates", "ATC calculations", "SimBrief or Flightradar24 values", "Manual guesses"]
   }
 ];
 
@@ -105,7 +105,7 @@ export function Quiz() {
           >
             <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6 text-white">Membership Quiz</h1>
             <p className="text-xl text-muted-foreground mb-8">
-              To join SCVG, you must demonstrate a basic understanding of our rules and operations. Read the Pilot Handbook, then score 100% on this 10-question quiz to unlock Discord access.
+              To join SCXV, you must demonstrate a basic understanding of our rules and operations. Read the Pilot Handbook, then score 100% on this 10-question quiz to unlock Discord access.
             </p>
             <div className="flex gap-4 justify-center">
               <Button size="lg" onClick={() => setStarted(true)} className="px-8 py-6 text-lg h-auto">
