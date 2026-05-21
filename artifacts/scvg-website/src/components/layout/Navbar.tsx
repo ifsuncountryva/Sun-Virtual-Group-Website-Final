@@ -12,8 +12,8 @@ export function Navbar() {
     { href: "/about", label: "About Us" },
     { href: "/fleet", label: "Fleet" },
     { href: "/routes", label: "Routes" },
-    { href: "/handbook", label: "Handbook" },
     { href: "/ranks", label: "Ranks" },
+    { href: "/handbook", label: "Handbook" },
   ];
 
   return (
