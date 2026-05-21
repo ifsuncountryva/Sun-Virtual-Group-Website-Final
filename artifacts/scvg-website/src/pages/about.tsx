@@ -132,29 +132,32 @@ export function About() {
             </div>
             <div className="grid sm:grid-cols-2 gap-5 max-w-xl">
               {[
-                { role: "Founder & CEO",  name: "flyinggoosey",    callsign: "Sun Country 001SY",  accent: SC_ORANGE },
-                { role: "Chief Advisor",  name: "co-pilot-goosey", callsign: "Sun Country 003SY",  accent: SC_ORANGE },
+                { role: "Founder & CEO",  name: "flyinggoosey",    callsign: "Sun Country 001SY", accent: SC_ORANGE, avatar: "/staff-flyinggoosey.png" },
+                { role: "Chief Advisor",  name: "co-pilot-goosey", callsign: "Sun Country 003SY", accent: SC_ORANGE, avatar: "/staff-copilotgoosey.png" },
               ].map((leader, i) => (
                 <Card
                   key={i}
-                  className="border text-center py-6 overflow-hidden"
+                  className="border text-center overflow-hidden"
                   style={{
                     borderColor: `${leader.accent}0.25)`,
                     background: `linear-gradient(135deg,${leader.accent}0.07),rgba(13,27,62,0.7))`,
                   }}
                 >
                   <CardContent className="p-0">
-                    <div
-                      className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white"
-                      style={{ background: `linear-gradient(135deg,${leader.accent}0.6),${leader.accent}0.3))` }}
-                    >
-                      {leader.name.charAt(0).toUpperCase()}
+                    <div className="w-full aspect-square overflow-hidden">
+                      <img
+                        src={leader.avatar}
+                        alt={leader.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <h3 className="font-bold text-lg mb-1 text-white">{leader.name}</h3>
-                    <p className="text-sm font-semibold mb-1" style={{ color: leader.accent === SC_ORANGE ? "#F47C20" : "#60a5fa" }}>
-                      {leader.role}
-                    </p>
-                    <p className="text-xs font-mono text-muted-foreground">{leader.callsign}</p>
+                    <div className="py-5 px-4">
+                      <h3 className="font-bold text-lg mb-1 text-white">{leader.name}</h3>
+                      <p className="text-sm font-semibold mb-1" style={{ color: "#F47C20" }}>
+                        {leader.role}
+                      </p>
+                      <p className="text-xs font-mono text-muted-foreground">{leader.callsign}</p>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
