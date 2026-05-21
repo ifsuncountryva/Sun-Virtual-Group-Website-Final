@@ -130,14 +130,10 @@ export function About() {
               <div className="h-7 w-1 rounded-full" style={{ background: "linear-gradient(180deg,#2563EB,#F47C20)" }} />
               <h2 className="text-3xl font-bold font-serif text-white">Leadership Team</h2>
             </div>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+            <div className="grid sm:grid-cols-2 gap-5 max-w-xl">
               {[
-                { role: "Chief Executive Officer",  name: "flyinggoosey",    accent: SC_ORANGE },
-                { role: "Chief Operating Officer",  name: "SCXV COO",        accent: G4_BLUE },
-                { role: "Hub Manager – MSP",        name: "MSP Manager",     accent: SC_ORANGE },
-                { role: "Hub Manager – LAS",        name: "LAS Manager",     accent: G4_BLUE },
-                { role: "Events Coordinator",       name: "Events Lead",     accent: SC_ORANGE },
-                { role: "Training Director",        name: "Training Lead",   accent: G4_BLUE },
+                { role: "Founder & CEO",  name: "flyinggoosey",    callsign: "Sun Country 001SY",  accent: SC_ORANGE },
+                { role: "Chief Advisor",  name: "co-pilot-goosey", callsign: "Sun Country 003SY",  accent: SC_ORANGE },
               ].map((leader, i) => (
                 <Card
                   key={i}
@@ -155,9 +151,10 @@ export function About() {
                       {leader.name.charAt(0).toUpperCase()}
                     </div>
                     <h3 className="font-bold text-lg mb-1 text-white">{leader.name}</h3>
-                    <p className="text-sm" style={{ color: leader.accent === SC_ORANGE ? "#F47C20" : "#60a5fa" }}>
+                    <p className="text-sm font-semibold mb-1" style={{ color: leader.accent === SC_ORANGE ? "#F47C20" : "#60a5fa" }}>
                       {leader.role}
                     </p>
+                    <p className="text-xs font-mono text-muted-foreground">{leader.callsign}</p>
                   </CardContent>
                 </Card>
               ))}
