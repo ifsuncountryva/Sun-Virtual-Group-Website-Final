@@ -14,6 +14,7 @@ import { Fleet } from "@/pages/fleet";
 import { Routes } from "@/pages/routes";
 import { Handbook } from "@/pages/handbook";
 import { Quiz } from "@/pages/quiz";
+import { Ranks } from "@/pages/ranks";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ function Router() {
           <Route path="/routes" component={Routes} />
           <Route path="/handbook" component={Handbook} />
           <Route path="/quiz" component={Quiz} />
+          <Route path="/ranks" component={Ranks} />
           <Route component={NotFound} />
         </Switch>
       </main>
