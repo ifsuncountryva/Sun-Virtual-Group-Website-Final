@@ -409,7 +409,7 @@ export function Handbook() {
                       <tbody className="divide-y divide-border">
                         {[
                           { ac: "Boeing 737-800",    speed: "Mach 0.74 – 0.80", alt: "FL410" },
-                          { ac: "DC-10",             speed: "Mach 0.77 – 0.83", alt: "—" },
+                          { ac: "DC-10",             speed: "Mach 0.77 – 0.83", alt: "FL420" },
                           { ac: "Airbus A320",       speed: "Mach 0.76 – 0.80", alt: "FL390" },
                           { ac: "Boeing 757-200",    speed: "Mach 0.77 – 0.81", alt: "FL420" },
                         ].map((r) => (

@@ -9,14 +9,14 @@ import { motion, AnimatePresence } from "framer-motion";
 const questions = [
   // ── §4 Rank Structure ────────────────────────────────────────────────────
   {
-    section: "§4 — Rank Structure",
+    section: "Section 4 — Rank Structure",
     sectionId: "ranks",
     question: "Which rank gains access to all SCXV codeshare routes?",
     correct: "First Officer",
     options: ["Cadet", "Captain", "First Officer", "Executive Flight Crew"],
   },
   {
-    section: "§4 — Rank Structure",
+    section: "Section 4 — Rank Structure",
     sectionId: "ranks",
     question: "What rank unlocks Gemini Air Cargo routes?",
     correct: "Training Captain",
@@ -24,28 +24,28 @@ const questions = [
   },
   // ── §5 Routes & Charter Ops ──────────────────────────────────────────────
   {
-    section: "§5 — Routes & Charter Operations",
+    section: "Section 5 — Routes & Charter Operations",
     sectionId: "routes",
     question: "What is the minimum rank required to fly charter flights at SCXV?",
     correct: "Executive Flight Crew",
     options: ["Captain", "Executive Flight Crew", "Training Captain", "First Officer"],
   },
   {
-    section: "§5 — Routes & Charter Operations",
+    section: "Section 5 — Routes & Charter Operations",
     sectionId: "routes",
     question: "Which aircraft is used exclusively for Sun Country charter operations?",
     correct: "Boeing 737-800",
     options: ["Airbus A320", "Boeing 757-200", "Boeing 737-800", "DC-10"],
   },
   {
-    section: "§5 — Routes & Charter Operations",
+    section: "Section 5 — Routes & Charter Operations",
     sectionId: "routes",
     question: "What is the maximum flight time allowed for a charter flight?",
     correct: "8 hours",
     options: ["6 hours", "10 hours", "12 hours", "8 hours"],
   },
   {
-    section: "§5 — Routes & Charter Operations",
+    section: "Section 5 — Routes & Charter Operations",
     sectionId: "routes",
     question: "What is the required callsign prefix for charter PIREPs?",
     correct: "SY8XXX",
@@ -53,7 +53,7 @@ const questions = [
   },
   // ── §6 Featured Flights ──────────────────────────────────────────────────
   {
-    section: "§6 — Featured Flights",
+    section: "Section 6 — Featured Flights",
     sectionId: "featured",
     question: "What bonus multiplier is awarded when both the Airport of the Month and Airline of the Month are completed on the same flight?",
     correct: "3x",
@@ -61,21 +61,21 @@ const questions = [
   },
   // ── §7 General Operating Procedures ─────────────────────────────────────
   {
-    section: "§7 — General Operating Procedures",
+    section: "Section 7 — General Operating Procedures",
     sectionId: "ops",
     question: "Which Infinite Flight server must all SCXV flights be conducted on?",
     correct: "Expert Server",
     options: ["Casual Server", "Training Server", "Expert Server", "Private Server"],
   },
   {
-    section: "§7 — General Operating Procedures",
+    section: "Section 7 — General Operating Procedures",
     sectionId: "ops",
     question: "What is the maximum number of flights that may be logged simultaneously using AP+?",
     correct: "2",
     options: ["1", "2", "3", "Unlimited"],
   },
   {
-    section: "§7 — General Operating Procedures",
+    section: "Section 7 — General Operating Procedures",
     sectionId: "ops",
     question: "If AP+ incorrectly tracks fuel or time, what may pilots use as a substitute?",
     correct: "SimBrief or Flightradar24 values",
