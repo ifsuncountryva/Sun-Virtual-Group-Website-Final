@@ -1,8 +1,9 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Plane, Users, Globe, ChevronRight, Award, ShieldCheck } from "lucide-react";
+import { Plane, Users, Globe, ChevronRight, Award, ShieldCheck, MapPin, Star, Megaphone } from "lucide-react";
 import { motion } from "framer-motion";
+import { announcements, airportOfTheMonth, airlineOfTheMonth } from "@/data/spotlight";
 
 export function Home() {
   const fadeIn = {
@@ -278,6 +279,83 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── Monthly Spotlight + Announcements ── */}
+      <section className="py-20 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(244,124,32,0.06),transparent)]" />
+        <div className="container mx-auto px-4 relative z-10">
+
+          {/* Section heading */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="h-6 w-1 rounded-full" style={{ background: "linear-gradient(180deg,#F47C20,#2563EB)" }} />
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-white">This Month at SCXV</h2>
+            </div>
+            <p className="text-muted-foreground ml-4">Spotlights and announcements from the leadership team.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            {/* Airport of the Month */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }}>
+              <div className="rounded-xl p-6 h-full border relative overflow-hidden"
+                style={{ borderColor: "rgba(244,124,32,0.30)", background: "linear-gradient(135deg,rgba(244,124,32,0.10),rgba(13,27,62,0.85))" }}>
+                <div className="absolute top-0 inset-x-0 h-0.5" style={{ background: "linear-gradient(90deg,#F47C20,transparent)" }} />
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-4">
+                  <MapPin className="w-3.5 h-3.5" /> Airport of the Month
+                </div>
+                <div className="text-5xl font-bold font-mono text-white mb-1">{airportOfTheMonth.code}</div>
+                <div className="text-lg font-semibold text-white mb-0.5">{airportOfTheMonth.name}</div>
+                <div className="text-sm text-muted-foreground mb-4">{airportOfTheMonth.state}</div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{airportOfTheMonth.note}</p>
+              </div>
+            </motion.div>
+
+            {/* Airline of the Month */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.10 }}>
+              <div className="rounded-xl p-6 h-full border relative overflow-hidden"
+                style={{ borderColor: "rgba(37,99,235,0.30)", background: "linear-gradient(135deg,rgba(37,99,235,0.10),rgba(13,27,62,0.85))" }}>
+                <div className="absolute top-0 inset-x-0 h-0.5" style={{ background: "linear-gradient(90deg,#2563EB,transparent)" }} />
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
+                  <Star className="w-3.5 h-3.5" /> Airline of the Month
+                </div>
+                <div className="text-3xl font-bold font-serif text-white mb-3">{airlineOfTheMonth.name}</div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{airlineOfTheMonth.note}</p>
+              </div>
+            </motion.div>
+
+            {/* Announcements */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
+              <div className="rounded-xl p-6 h-full border border-white/8 relative overflow-hidden"
+                style={{ background: "rgba(255,255,255,0.03)" }}>
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+                  <Megaphone className="w-3.5 h-3.5" /> Announcements
+                </div>
+                <div className="space-y-4">
+                  {announcements.slice(0, 3).map((a, i) => (
+                    <div key={i} className={`${i > 0 ? "pt-4 border-t border-white/5" : ""}`}>
+                      <div className="flex items-center gap-2 mb-1">
+                        {a.tag && (
+                          <span className="text-xs font-semibold px-1.5 py-0.5 rounded"
+                            style={{ background: "rgba(244,124,32,0.15)", color: "#F47C20" }}>
+                            {a.tag}
+                          </span>
+                        )}
+                        <span className="text-xs text-muted-foreground">{a.date}</span>
+                      </div>
+                      <h4 className="text-sm font-bold text-white mb-1">{a.title}</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{a.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gradient divider */}
+      <div className="h-px" style={{ background: "linear-gradient(90deg,transparent,rgba(37,99,235,0.4) 50%,transparent)" }} />
 
       {/* ── Join the Ranks ── */}
       <section className="py-24 bg-background relative overflow-hidden">
