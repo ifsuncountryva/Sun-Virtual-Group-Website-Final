@@ -1,0 +1,75 @@
+Update the website with the following improvements while maintaining the existing professional design language and the current color theme (Sun Country orange, Allegiant blue, and the mixed-color theme for Dual content).
+
+1. Rank Progression Page
+
+* Remove the repeated text that says each rank includes “everything from the previous rank.”
+* Each rank should only display its own unique responsibilities and privileges.
+* Keep the progression clean and easy to read.
+
+2. Captain Rank
+
+* Under the Charter Flights section, remove the explanatory text currently in parentheses.
+* Replace it with simply:
+    * See Handbook
+
+3. Staff Page
+
+* Replace the existing FlyingGoosey staff image with the attached image.
+* Keep the same styling, sizing, and layout as the current staff cards.
+
+4. Route Network Page
+
+Remove the current static list of routes entirely.
+
+Replace it with an interactive, dynamic route map that highlights our network.
+
+Sun Country
+
+Primary Hub
+
+* Minneapolis (MSP)
+
+Focus Cities
+
+* Dallas
+* Los Angeles
+* San Francisco
+* Portland
+
+Allegiant
+
+Operating Bases / Focus Airports
+
+* Las Vegas (LAS)
+* Phoenix–Mesa (AZA)
+* Fort Lauderdale (FLL)
+* St. Petersburg/Clearwater (PIE)
+* Sanford/Orlando (SFB)
+
+The map should visually distinguish:
+
+* Sun Country destinations using Sun Country branding/colors.
+* Allegiant destinations using Allegiant branding/colors.
+* Shared or dual operations using the existing mixed-color theme already used elsewhere on the site.
+
+5. Hawaii Operations
+
+Add a dedicated section highlighting Hawaii service.
+
+This should explain that:
+
+* Both airlines feature Hawaii destinations.
+* Both airlines operate service to Honolulu (HNL) and Maui (OGG) from various cities in the western United States.
+* Sun Country also offers convenient connections from Minneapolis (MSP) to Hawaii via Los Angeles (LAX).
+
+Use attractive route lines on the map to illustrate these Hawaii connections.
+
+6. Visual Consistency
+
+Continue using the existing design language throughout the site:
+
+* Sun Country sections = Sun Country colors.
+* Allegiant sections = Allegiant colors.
+* Shared/Dual sections = blended Sun Country + Allegiant color scheme.
+* Keep spacing, typography, animations, and card styles consistent with the rest of the website.
+* Ensure the interactive map is responsive and works well on desktop, tablet, and mobile devices.

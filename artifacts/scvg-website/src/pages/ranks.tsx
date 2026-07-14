@@ -38,7 +38,6 @@ const ranks = [
     description:
       "Reaching 40 hours marks your first major milestone. First Officers unlock the full SCXV codeshare network — over a dozen partner carriers spanning Europe, South America, and beyond.",
     access: [
-      "Everything at Cadet rank",
       "All SCXV Codeshare Routes",
       "Partner carrier fleet (Aeroflot, easyJet, jetBlue, Norse, and more)",
       "Access to group flight events",
@@ -59,9 +58,8 @@ const ranks = [
     description:
       "200 hours earns you the four bars. Captains unlock Prime Air cargo routes and the full charter network — fly the Sun Country 737-800 to any 737-capable airport worldwide.",
     access: [
-      "Everything at First Officer rank",
       "Prime Air cargo routes",
-      "Charter flights (Sun Country 737-800, any 737-capable airport, max 8 hrs)",
+      "Charter flights — See Handbook",
       "Can lead and organise group flights",
       "Captain designation on all SCXV records",
     ],
@@ -81,7 +79,6 @@ const ranks = [
     description:
       "Training Captains have the hours and the experience to mentor new pilots. This rank unlocks Gemini Air Cargo operations and formal mentoring responsibilities within the group.",
     access: [
-      "Everything at Captain rank",
       "Gemini Air Cargo routes",
       "Formal pilot mentoring role",
       "Training Captain badge and distinction",
@@ -102,7 +99,6 @@ const ranks = [
     description:
       "The pinnacle of SCXV operations. Executive Flight Crew pilots have proven themselves across every corner of the network and now unlock Live Mode — the most immersive and exclusive flying experience SCXV offers.",
     access: [
-      "Everything at Training Captain rank",
       "Live Mode access",
       "Highest distinction within SCXV",
     ],
