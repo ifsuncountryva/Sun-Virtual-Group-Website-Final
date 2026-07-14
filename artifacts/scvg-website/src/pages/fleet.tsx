@@ -182,17 +182,13 @@ export function Fleet() {
                       className="rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:scale-[1.01]"
                       style={{ border: `1px solid ${ac.border}`, background: ac.bg }}
                     >
-                      {/* Image area */}
-                      <div className="h-44 flex items-center justify-center p-4 relative"
-                        style={{ background: "rgba(0,0,0,0.15)" }}>
-                        <AircraftImagePlaceholder type={aircraft.type} image={aircraft.image} />
-                        <span className={`absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full border ${divisionColors[aircraft.division]}`}>
-                          {aircraft.division}
-                        </span>
-                      </div>
-
                       {/* Content */}
                       <div className="p-5 flex-1 flex flex-col">
+                        <div className="flex items-start justify-between gap-2 mb-1">
+                          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${divisionColors[aircraft.division]}`}>
+                            {aircraft.division}
+                          </span>
+                        </div>
                         <h3 className="text-xl font-bold font-serif text-white mb-1">{aircraft.type}</h3>
                         <p className="text-sm text-muted-foreground mb-4">{aircraft.role}</p>
 

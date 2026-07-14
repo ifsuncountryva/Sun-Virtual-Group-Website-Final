@@ -55,12 +55,13 @@ const ranks = [
     color: "#2563EB",
     accentColor: "rgba(37,99,235,0.30)",
     glowColor: "rgba(37,99,235,0.30)",
-    unlocks: "Prime Air Routes",
+    unlocks: "Prime Air Routes & Charter Flights",
     description:
-      "200 hours earns you the four bars. Captains unlock Prime Air cargo routes — an expansion of the operation into dedicated cargo flying.",
+      "200 hours earns you the four bars. Captains unlock Prime Air cargo routes and the full charter network — fly the Sun Country 737-800 to any 737-capable airport worldwide.",
     access: [
       "Everything at First Officer rank",
       "Prime Air cargo routes",
+      "Charter flights (Sun Country 737-800, any 737-capable airport, max 8 hrs)",
       "Can lead and organise group flights",
       "Captain designation on all SCXV records",
     ],
@@ -97,14 +98,12 @@ const ranks = [
     color: "#F47C20",
     accentColor: "rgba(244,124,32,0.35)",
     glowColor: "rgba(244,124,32,0.40)",
-    unlocks: "Charter Flights",
+    unlocks: "Live Mode",
     description:
-      "The pinnacle of SCXV operations. Executive Flight Crew pilots have proven themselves across every corner of the network. Charter operations are now open — fly the Sun Country 737-800 to any 737-capable airport worldwide, up to 8 hours.",
+      "The pinnacle of SCXV operations. Executive Flight Crew pilots have proven themselves across every corner of the network and now unlock Live Mode — the most immersive and exclusive flying experience SCXV offers.",
     access: [
       "Everything at Training Captain rank",
-      "Charter flights (Sun Country 737-800 only)",
-      "Any 737-capable airport worldwide",
-      "Maximum flight time: 8 hours",
+      "Live Mode access",
       "Highest distinction within SCXV",
     ],
   },

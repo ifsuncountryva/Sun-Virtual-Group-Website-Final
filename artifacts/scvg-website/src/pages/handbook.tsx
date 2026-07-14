@@ -297,9 +297,9 @@ export function Handbook() {
                     {[
                       { rank: "Cadet",                hours: "0 – 39 hrs",  access: "Sun Country & Allegiant Scheduled Routes" },
                       { rank: "First Officer",        hours: "40 hrs",      access: "All Codeshare Routes" },
-                      { rank: "Captain",              hours: "200 hrs",     access: "Prime Air Routes" },
+                      { rank: "Captain",              hours: "200 hrs",     access: "Prime Air Routes & Charter Flights" },
                       { rank: "Training Captain",     hours: "400 hrs",     access: "Gemini Air Cargo Routes" },
-                      { rank: "Executive Flight Crew",hours: "750 hrs",     access: "Charter Flights" },
+                      { rank: "Executive Flight Crew",hours: "750 hrs",     access: "Live Mode" },
                     ].map((r, i) => (
                       <tr key={r.rank} className={`hover:bg-muted/30 transition-colors ${i === 4 ? "bg-primary/5" : ""}`}>
                         <td className="px-4 py-3 font-semibold text-foreground">{r.rank}</td>
@@ -332,7 +332,7 @@ export function Handbook() {
                   <p>Sun Country operates one of the largest charter networks in North America. SCXV has replicated this in a unique fashion.</p>
 
                   <Callout type="rule">
-                    Charter flights are restricted to pilots who have reached <strong>Executive Flight Crew</strong> rank (750 hours).
+                    Charter flights are available to pilots who have reached <strong>Captain</strong> rank (200 hours).
                   </Callout>
 
                   <div className="not-prose mt-4 grid sm:grid-cols-3 gap-4">
