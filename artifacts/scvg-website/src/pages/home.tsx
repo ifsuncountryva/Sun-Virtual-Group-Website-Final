@@ -118,6 +118,55 @@ export function Home() {
         <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </section>
 
+      {/* ── Live Mode Feature Banner ── */}
+      <section className="py-16 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(244,124,32,0.07),transparent)]" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Label */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+                style={{ background: "rgba(244,124,32,0.15)", color: "#F47C20", border: "1px solid rgba(244,124,32,0.30)" }}>
+                ⚡ NEW FEATURE
+              </span>
+            </div>
+
+            {/* Banner image — full width, clickable to handbook */}
+            <Link href="/handbook#livemode">
+              <div className="rounded-2xl overflow-hidden border border-primary/25 cursor-pointer group relative"
+                style={{ boxShadow: "0 0 60px rgba(244,124,32,0.18), 0 0 120px rgba(244,124,32,0.06)" }}>
+                <img
+                  src="/live-mode-banner.png"
+                  alt="Live Mode Has Landed — Sun Country Virtual Group"
+                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.01]"
+                />
+                {/* Overlay CTA */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                  <span className="text-white font-bold text-lg tracking-wide bg-primary/80 px-6 py-2 rounded-full backdrop-blur-sm">
+                    Learn More in the Handbook →
+                  </span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Subtext */}
+            <p className="text-center text-muted-foreground text-sm mt-4">
+              Exclusive to <span className="text-primary font-semibold">Executive Flight Crew</span> rank · Limited beta via Infinite Flight waitlist ·{" "}
+              <Link href="/ranks">
+                <span className="text-blue-400 hover:text-blue-300 cursor-pointer underline underline-offset-2">See rank requirements</span>
+              </Link>
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="h-px" style={{ background: "linear-gradient(90deg,transparent,rgba(244,124,32,0.3) 50%,transparent)" }} />
+
       {/* ── Our Story Teaser ── */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">

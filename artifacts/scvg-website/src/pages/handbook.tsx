@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   BookOpen, Shield, Plane, Star, Award, FileText,
-  Gauge, Radio, ChevronRight, Info, CheckCircle, AlertTriangle
+  Gauge, Radio, ChevronRight, Info, CheckCircle, AlertTriangle, Zap
 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,7 @@ const sections = [
   { id: "routes",    label: "Routes & Charter Ops",         icon: Radio },
   { id: "featured",  label: "Featured Flights",             icon: Star },
   { id: "ops",       label: "General Operating Procedures", icon: Gauge },
+  { id: "livemode",  label: "Live Mode",                   icon: Zap },
 ];
 
 function Callout({ type, children }: { type: "info" | "warning" | "rule"; children: React.ReactNode }) {
@@ -454,6 +455,87 @@ export function Handbook() {
                   </ul>
                 </div>
               </div>
+            </section>
+
+            {/* ── Section 8 — Live Mode ── */}
+            <section ref={(el) => { sectionRefs.current["livemode"] = el; }}>
+              <SectionHeader id="livemode" num="8" label="Live Mode" icon={Zap} />
+
+              {/* Banner image */}
+              <div className="rounded-xl overflow-hidden mb-6 border border-primary/20">
+                <img src="/live-mode-banner.png" alt="Live Mode Has Landed" className="w-full h-auto" />
+              </div>
+
+              <div className="prose prose-invert prose-sm max-w-none prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-foreground space-y-6">
+                <p>
+                  Live Mode is Infinite Flight's most immersive feature — and SCXV is building its presence across the network. When you fly in Live Mode, your aircraft stays exactly where you park it. Every flight leaves a lasting mark on the Infinite Flight world.
+                </p>
+              </div>
+
+              <Callout type="rule">
+                Live Mode is an <strong>exclusive privilege</strong> for pilots who have reached <strong>Executive Flight Crew</strong> rank (750 hours). It is currently in limited beta and rolling out via waitlist through Infinite Flight.
+              </Callout>
+
+              <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    title: "Persistent Aircraft",
+                    body: "Aircraft stay where you park them. Every flight leaves a lasting impact on the Infinite Flight world.",
+                    color: "border-primary/30 bg-primary/8",
+                    icon: "✈️",
+                  },
+                  {
+                    title: "Limited Beta Access",
+                    body: "Infinite Flight is testing this feature. Access is limited and rolling out through a waitlist.",
+                    color: "border-blue-500/30 bg-blue-500/8",
+                    icon: "🔒",
+                  },
+                  {
+                    title: "Exclusive Rank Benefit",
+                    body: "Live Mode is locked to Executive Flight Crew rank — the highest distinction in SCXV. Reach 750 hours to unlock it.",
+                    color: "border-primary/30 bg-primary/8",
+                    icon: "⭐",
+                  },
+                  {
+                    title: "Leave Your Mark",
+                    body: "Help build SCXV's presence across the Infinite Flight community. The more we fly, the more we stand out — together.",
+                    color: "border-blue-500/30 bg-blue-500/8",
+                    icon: "🌐",
+                  },
+                ].map((item) => (
+                  <div key={item.title} className={`rounded-lg border ${item.color} p-4`}>
+                    <div className="text-2xl mb-2">{item.icon}</div>
+                    <h4 className="text-sm font-bold text-white mb-1">{item.title}</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 space-y-3">
+                <h3 className="text-base font-bold text-white">8.1 How to Participate</h3>
+                <ul className="text-sm text-muted-foreground space-y-3">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span><strong className="text-foreground">Get Access</strong> — Check your Infinite Flight account for Live Mode access. It is currently rolling out via waitlist.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span><strong className="text-foreground">Fly. Explore. Represent.</strong> — Operate Sun Country Virtual Group aircraft, explore new destinations, and build our global footprint.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span><strong className="text-foreground">Park & Stay</strong> — Park your aircraft and let it stay, building our presence 24/7 even when you're offline.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span><strong className="text-foreground">Stronger Together</strong> — The more SCXV pilots fly in Live Mode, the more Sun Country Virtual Group stands out across the Infinite Flight world.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Callout type="info">
+                Key hubs to build our presence: <strong>MSP</strong> (Minneapolis), <strong>LAS</strong> (Las Vegas), <strong>MSP</strong>, <strong>SEA</strong> (Seattle), <strong>PHX</strong> (Phoenix), <strong>DFW</strong> (Dallas), <strong>MCO</strong> (Orlando). Prioritise these airports when parking.
+              </Callout>
             </section>
 
             {/* Final Note */}
